@@ -7,20 +7,25 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
+          <a class="nav-link <?= $pageTitle == "Home" ? "active" : "" ?>" href="./index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./products.php">Products</a>
+          <a class="nav-link <?= $pageTitle == "Products" ? "active" : "" ?>" href="./bestSellers.php">Best Sellers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link <?= $pageTitle == "New Releases" ? "active" : "" ?>" href="./newReleases.php">New Releases</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+            All Categories
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="#">Smartphones and Accessories</a></li>
+            <li><a class="dropdown-item" href="#">Computers and Laptops</a></li>
+            <li><a class="dropdown-item" href="#">Audio and Headphones</a></li>
+            <li><a class="dropdown-item" href="#">Gaming and Entertainment</a></li>
+            <li><a class="dropdown-item" href="#">Wearable Technology</a></li>
+            <li><a class="dropdown-item" href="#">Networking and Internet</a></li>
           </ul>
         </li>
       </ul>
