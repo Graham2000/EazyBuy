@@ -8,7 +8,7 @@
 
 <div class="container p-5 border">
     <div class="row">
-        <div class="col border pt-3">
+        <div class="col-12 col-lg-6 border pt-3">
             <img class="productImg 0" src="./img/charger.jpg" style="width:100%"></img>
             <div class="border p-3 m-3">
                 <img class="preview 0 border p-2" src="./img/charger.jpg" style="width:100px"></img>
@@ -23,25 +23,89 @@
         <br>
         RATING | Num of rating
         </div>
-        <div class="col border text-center">
-            <select class="form-select mt-3 mb-3">
+        <div class="col border text-center p-3">
+            <select class="form-select mb-3">
                 <option selected>Choose quantity...</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
             </select>
-            <button class="btn btn-primary">Add to Cart</button>
-            <button class="btn btn-secondary">Buy Now</button>
+            <button class="btn btn-primary mb-2">Add to Cart</button>
+            <button class="btn btn-secondary mb-2">Buy Now</button>
         </div>
     </div>
     <div class="row mt-5">
-        Product Information
+        <h3 class="ps-0">Product Information</h3>
 
-        <br>
-        *table*
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Header1</th>
+                    <th scope="col">Header2</th>
+                    <th scope="col">Header3</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>data</td>
+                    <td>data</td>
+                    <td>data</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>data</td>
+                    <td>data</td>
+                    <td>data</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>data</td>
+                    <td>data</td>
+                    <td>data</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     <div class="row mt-5">
-        Reviews
+        <h3 class="ps-0">Reviews</h3>
+        <i class="ps-0">User X</i> <br>
+        <div class="text-start ps-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill ms-0" viewBox="0 0 16 16">
+                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+            </svg>
+        </div>
+        <p class="ps-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat iste dignissimos tempora voluptatibus quas at, corporis culpa excepturi eligendi quo fugit et laudantium dolorem voluptatem earum harum quos, nam neque?</p>
+
+
+
+
+        <i class="ps-0">User Y</i> <br>
+        <div class="text-start ps-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill ms-0" viewBox="0 0 16 16">
+                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+            </svg>
+        </div>
+        <p class="ps-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat iste dignissimos tempora voluptatibus quas at, corporis culpa excepturi eligendi quo fugit et laudantium dolorem voluptatem earum harum quos, nam neque?</p>
+
+
+        <i class="ps-0">User Z</i> <br>
+        <div class="text-start ps-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill ms-0" viewBox="0 0 16 16">
+                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+            </svg>
+        </div>
+        <p class="ps-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat iste dignissimos tempora voluptatibus quas at, corporis culpa excepturi eligendi quo fugit et laudantium dolorem voluptatem earum harum quos, nam neque?</p>
     </div>
 </div>
 

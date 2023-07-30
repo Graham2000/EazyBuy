@@ -12,20 +12,19 @@
         <li class="nav-item">
           <a class="nav-link <?= $pageTitle == "Products" ? "active" : "" ?>" href="./bestSellers.php">Best Sellers</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link <?= $pageTitle == "New Releases" ? "active" : "" ?>" href="./newReleases.php">New Releases</a>
-        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             All Categories
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Smartphones and Accessories</a></li>
-            <li><a class="dropdown-item" href="#">Computers and Laptops</a></li>
+            <li><a class="dropdown-item" href="./mobile.php">Smartphones and Accessories</a></li>
+            <li><a class="dropdown-item" href="./computers.php">Computers and Laptops</a></li>
+            <!--
             <li><a class="dropdown-item" href="#">Audio and Headphones</a></li>
             <li><a class="dropdown-item" href="#">Gaming and Entertainment</a></li>
             <li><a class="dropdown-item" href="#">Wearable Technology</a></li>
             <li><a class="dropdown-item" href="#">Networking and Internet</a></li>
+            -->
           </ul>
         </li>
       </ul>
