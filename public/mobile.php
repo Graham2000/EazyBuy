@@ -56,7 +56,7 @@
                     </div>
 
                     <a href="./product.php">White 9" iPhone Charger</a>
-                    <p>$117.99</p>
+                    <p class="priceWhole mt-2">$115<span class="text-muted pricePart">.99</span></p>
                 </div>
                 <div class="col-12 col-md-5 col-lg border p-2 m-2">
                     <img src="./img/cc.jpg" style="width:100%"></img>
@@ -71,7 +71,7 @@
                     </div>
 
                     <a href="./product.php">White 9" iPhone Charger</a>
-                    <p>$117.99</p>
+                    <p class="priceWhole mt-2">$115<span class="text-muted pricePart">.99</span></p>
                 </div>
                 <div class="col-12 col-md-5 col-lg border p-2 m-2">
                     <img src="./img/cc.jpg" style="width:100%"></img>
@@ -86,7 +86,7 @@
                     </div>
 
                     <a href="./product.php">White 9" iPhone Charger</a>
-                    <p>$117.99</p>
+                    <p class="priceWhole mt-2">$115<span class="text-muted pricePart">.99</span></p>
                 </div>
                 <div class="col-12 col-md-5 col-lg border p-2 m-2">
                     <img src="./img/cc.jpg" style="width:100%"></img>
@@ -101,7 +101,7 @@
                     </div>
 
                     <a href="./product.php">White 9" iPhone Charger</a>
-                    <p>$117.99</p>
+                    <p class="priceWhole mt-2">$115<span class="text-muted pricePart">.99</span></p>
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -118,7 +118,7 @@
                     </div>
 
                     <a href="./product.php">White 9" iPhone Charger</a>
-                    <p>$117.99</p>
+                    <p class="priceWhole mt-2">$115<span class="text-muted pricePart">.99</span></p>
                 </div>
                 <div class="col-12 col-md-5 col-lg border p-2 m-2">
                     <img src="./img/cc.jpg" style="width:100%"></img>
@@ -133,7 +133,7 @@
                     </div>
 
                     <a href="./product.php">White 9" iPhone Charger</a>
-                    <p>$117.99</p>
+                    <p class="priceWhole mt-2">$115<span class="text-muted pricePart">.99</span></p>
                 </div>
                 <div class="col-12 col-md-5 col-lg border p-2 m-2">
                     <img src="./img/cc.jpg" style="width:100%"></img>
@@ -148,7 +148,7 @@
                     </div>
 
                     <a href="./product.php">White 9" iPhone Charger</a>
-                    <p>$117.99</p>
+                    <p class="priceWhole mt-2">$115<span class="text-muted pricePart">.99</span></p>
                 </div>
                 <div class="col-12 col-md-5 col-lg border p-2 m-2">
                     <img src="./img/cc.jpg" style="width:100%"></img>
@@ -163,7 +163,7 @@
                     </div>
 
                     <a href="./product.php">White 9" iPhone Charger</a>
-                    <p>$117.99</p>
+                    <p class="priceWhole mt-2">$115<span class="text-muted pricePart">.99</span></p>
                 </div>
             </div>
         </div>
