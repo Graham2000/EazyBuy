@@ -31,15 +31,15 @@ body, html {
     margin-left: 10px;
 }
 
-.product p:last-of-type, .item p:last-of-type {
+.product p:last-of-type, .itemCard p:last-of-type {
     margin-bottom: 10px;
 }
 
-.product p, .item p {
+.product p, .itemCard p {
     margin-bottom: 0px;
 }
 
-.product img, .item img {
+.product img, .itemCard img {
     height: 200px;
     margin: 10px;
     border-radius: 9px;
@@ -55,11 +55,24 @@ body, html {
     overflow: scroll;
 }
 
-.item {
+.itemCard {
     padding: 0px;
     margin: 10px;
 }
 
-.item p {
+.itemCard p {
     margin-left: 10px;
+}
+
+
+/*Img slider on main page*/
+#imgSlider img {
+    max-width: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#textContainer {
+  position: absolute;
+  color: #fff;
 }

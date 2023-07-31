@@ -4,30 +4,37 @@
     include("./includes/nav.php");
 ?>
 
-<div id="carouselContainer">
-    <div id="carouselExample" class="carousel slide">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-            <img src="./img/img1.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-            <img src="./img/img2.jpg" class="d-block w-100" alt="...">
-            </div>
+<script src="./js/imgSlider.js" defer></script>
+
+<!---Img slider-->
+<div id="imgSlider" class="container border p-5 d-flex justify-content-center align-items-center" style="height:500px">
+    <div id="textContainer" class="text-center">
+        <h3 id="sliderHeader">Laptops</h3>
+        <p id="sliderDescr">Starting at $117.99</p>
+        <a class="btn btn-info" href="#">Shop Now</a>
+    </div>
+
+    <div class="w-100 d-flex flex-row">
+        <div class="w-50">
+            <button class="btn p-0" onclick="subImg()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-chevron-left text-light" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                </svg>
+            </button>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+        <div class="w-50 text-end">
+            <button class="btn p-0" onclick="addImg()" class="margin-end">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-chevron-right text-light" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+            </button>
+        </div>
     </div>
 </div>
 
 <div class="container p-5 mt-5">
     
-    <h1>Heading 1</h1>
+    <h1>Top Sellers</h1>
 
     <div class="productShowcase">
         <div class="product">
@@ -112,7 +119,7 @@
         </div>
     </div>
 
-    <h1>Heading 2</h1>
+    <h1>New Products</h1>
 
     <div class="productShowcase">
         <div class="product">
@@ -197,7 +204,7 @@
         </div>
     </div>
 
-    <h1>Heading 3</h1>
+    <h1>Best Deals</h1>
 
     <div class="productShowcase">
         <div class="product">

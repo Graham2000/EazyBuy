@@ -7,7 +7,7 @@
 <div class="container p-5">
     <h3><b>Smartphones and Accessories</b></h3>
     <div class="regShowcase">
-        <div class="item">
+        <div class="itemCard">
             <img src="./img/headphones.jpg"></img>
             <p><a href="#">Description of item</a></p>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -27,7 +27,7 @@
             </svg>
             <p>$115.99</p>
         </div>
-        <div class="item">
+        <div class="itemCard">
             <img src="./img/headphones.jpg"></img>
             <p><a href="#">Description of item</a></p>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -47,7 +47,7 @@
             </svg>
             <p>$115.99</p>
         </div>
-        <div class="item">
+        <div class="itemCard">
             <img src="./img/headphones.jpg"></img>
             <p><a href="#">Description of item</a></p>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -67,7 +67,7 @@
             </svg>
             <p>$115.99</p>
         </div>
-        <div class="item">
+        <div class="itemCard">
             <img src="./img/headphones.jpg"></img>
             <p><a href="#">Description of item</a></p>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -87,7 +87,7 @@
             </svg>
             <p>$115.99</p>
         </div>
-        <div class="item">
+        <div class="itemCard">
             <img src="./img/headphones.jpg"></img>
             <p><a href="#">Description of item</a></p>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
