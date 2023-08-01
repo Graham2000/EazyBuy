@@ -9,9 +9,13 @@
         <h1 class="h3 mb-3 font-weight-normal text-center">Sign In</h1>
         <input type="email" id="inputEmail" class="form-control mb-2" placeholder="Email address" required="" autofocus="">
         <input type="password" id="inputPassword" class="form-control mb-2" placeholder="Password" required="">
+
+        <div class="d-grid g-2">
+            <button class="btn btn-primary mt-1 mb-2" type="submit">Sign in</button>
+        </div>
+
         <a href="#">Forgot password</a><br>
         <a href="#">Create an account</a><br>
-        <button class="btn btn-primary mt-1" type="submit">Sign in</button>
     </form>
 </div>
 
