@@ -14,7 +14,7 @@ let count = 0;
 const length = backgroundImages.length;
 
 // Change img url on button click
-const subImg = () => {
+const prevImg = () => {
     if (count !== 0) {
         count--;
         //imgSlider.style.backgroundImage = `url(${backgroundImages[count]})`;
@@ -24,7 +24,7 @@ const subImg = () => {
     }
 }
 
-const addImg = () => {
+const nextImg = () => {
     if (count < length - 1) {
         count++;
         //imgSlider.style.backgroundImage = `url(${backgroundImages[count]})`;
