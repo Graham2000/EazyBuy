@@ -1,5 +1,5 @@
 <?php
-    $pageTitle = "Product";
+    $pageTitle = "Smartphones";
     include("./includes/header.php");
     include("./includes/nav.php");
 ?>

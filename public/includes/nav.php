@@ -17,8 +17,8 @@
             All Categories
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="./mobile.php">Smartphones and Accessories</a></li>
-            <li><a class="dropdown-item" href="./computers.php">Computers and Laptops</a></li>
+            <li><a class="dropdown-item" href="./smartphones.php">Smartphones</a></li>
+            <li><a class="dropdown-item" href="./laptops.php">Laptops</a></li>
             <!--
             <li><a class="dropdown-item" href="#">Audio and Headphones</a></li>
             <li><a class="dropdown-item" href="#">Gaming and Entertainment</a></li>
