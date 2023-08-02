@@ -4,6 +4,8 @@
     include("./includes/nav.php");
 ?>
 
+<script src="./js/removeItem.js" defer></script>
+
 <div class="container mt-3">
     <h3 class="pb-3">Shopping Cart</h3>
     <div class="row">
@@ -18,7 +20,7 @@
                 </select>
                 <p id="sliderDescr">$117.99</p>
                 <img src="./img/headphones.jpg" style="width:250px; border-radius:9px;"></img><br>
-                <button class="btn btn-primary mt-2 mb-2">Remove</button>
+                <button onclick="removeItem(this)" class="btn btn-primary mt-2 mb-2">Remove</button>
             </div>
 
             <div class="col-12 col-lg-9 border p-5">
@@ -31,7 +33,7 @@
                 </select>
                 <p id="sliderDescr">$117.99</p>
                 <img src="./img/headphones.jpg" style="width:250px; border-radius:9px;"></img><br>
-                <button class="btn btn-primary mt-2 mb-2">Remove</button>
+                <button onclick="removeItem(this)" class="btn btn-primary mt-2 mb-2">Remove</button>
             </div>
         </div>
 
