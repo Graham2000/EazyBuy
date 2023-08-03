@@ -10,34 +10,44 @@
         <button class="btn btn-primary mb-2">Search</button>
 
         <select class="form-select mb-2">
-            <option selected>CPU Type</option>
-            <option value="1">AMD</option>
-            <option value="2">Intel</option>
-        </select>
-        <select class="form-select mb-2">
-            <option selected>Screen Size</option>
-            <option value="1">11.6" and smaller</option>
-            <option value="2">12" - 13.9"</option>
-        </select>
-        <select class="form-select mb-2">
-            <option selected>Memory</option>
-            <option value="1">512GB</option>
-            <option value="2">128GB</option>
-        </select>
-        <select class="form-select mb-2">
             <option selected>Manufacturer</option>
-            <option value="1">Lenovo</option>
-            <option value="2">HP</option>
+            <option value="SAMSUNG">SAMSUNG</option>
+            <option value="Apple">Apple</option>
+            <option value="ASUS">ASUS</option>
+            <option value="OnePlus">OnePlus</option>
         </select>
         <select class="form-select mb-2">
-            <option selected>SSD</option>
-            <option value="1">2 TB and UP</option>
-            <option value="2">1 TB - 1.99 TB</option>
+            <option selected>Price Max</option>
+            <option value="100">$100</option>
+            <option value="200">$200</option>
+            <option value="300">$300</option>
+            <option value="1000">$1000</option>
+        </select>
+        <select class="form-select mb-2">
+            <option selected>Technology</option>
+            <option value="5G">5G</option>
+            <option value="4G LTE">4G LTE</option>
+            <option value="4G">4G</option>
+            <option value="3G">3G</option>
+            <option value="2G">2G</option>
+        </select>
+        <select class="form-select mb-2">
+            <option selected>Storage</option>
+            <option value="1">1 TB</option>
+            <option value="512">512GB</option>
+            <option value="128">128GB</option>
+            <option value="64">64GB</option>
+        </select>
+        <select class="form-select mb-2">
+            <option selected>RAM</option>
+            <option value="16">16GB</option>
+            <option value="12">12GB</option>
+            <option value="8">8GB</option>
         </select>
         <select class="form-select">
-            <option selected>Price</option>
-            <option value="1">$10 - $25</option>
-            <option value="2">$25 - $50</option>
+            <option selected>Operating System</option>
+            <option value="Android">Android</option>
+            <option value="iOS">iOS</option>
         </select>
     </div>
     <div class="col-12 col-lg-9">
