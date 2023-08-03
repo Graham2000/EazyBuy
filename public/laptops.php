@@ -4,55 +4,57 @@
     include("./includes/nav.php");
 ?>
 
-<div class="row">
+<div class="row justify-content-center mt-5">
     <div class="col-12 col-lg-2 border p-3">
-        <input type="text" class="form-control mb-2" placeholder="Search for a product"/>
-        <button class="btn btn-primary mb-2">Search</button>
+        <form action="#" method="get">
+            <input type="text" class="form-control mb-2" name="productName" placeholder="Search for a product">
+            <input type="submit" value="Apply Filters" class="btn btn-primary mb-2">
 
-        <select class="form-select mb-2">
-            <option selected>Manufacturer</option>
-            <option value="ASUS">ASUS</option>
-            <option value="HP">HP</option>
-            <option value="Lenovo">Lenovo</option>
-            <option value="SAMSUNG">SAMSUNG</option>
-            <option value="Apple">Apple</option>
-        </select>
-        <select class="form-select">
-            <option selected>Price Max</option>
-            <option value="200">$200</option>
-            <option value="300">$300</option>
-            <option value="400">$400</option>
-            <option value="500">$500</option>
-            <option value="600">$600</option>
-            <option value="700">$700</option>
-            <option value="1000">$1000</option>
-        </select>
-        <select class="form-select mb-2">
-            <option selected>CPU Type</option>
-            <option value="Intel Core i9">Intel Core i9</option>
-            <option value="Intel Core i5">Intel Core i5</option>
-            <option value="Apple M Series">Apple M Series</option>
-        </select>
-        <select class="form-select mb-2">
-            <option selected>Max Screen Size</option>
-            <option value="12">12"</option>
-            <option value="13">13"</option>
-            <option value="14">14"</option>
-            <option value="15">15"</option>
-            <option value="16">16"</option>
-        </select>
-        <select class="form-select mb-2">
-            <option selected>Memory</option>
-            <option value="32">32GB</option>
-            <option value="16">16GB</option>
-            <option value="8">8GB</option>
-        </select>
-        <select class="form-select mb-2">
-            <option selected>SSD</option>
-            <option value="2">2 TB</option>
-            <option value="1">1 TB</option>
-            <option value="500">500 GB</option>
-        </select>
+            <select class="form-select mb-2" name="manufacturer">
+                <option selected>Manufacturer</option>
+                <option value="ASUS">ASUS</option>
+                <option value="HP">HP</option>
+                <option value="Lenovo">Lenovo</option>
+                <option value="SAMSUNG">SAMSUNG</option>
+                <option value="Apple">Apple</option>
+            </select>
+            <select class="form-select mb-2" name="price">
+                <option selected>Price Max</option>
+                <option value="200">$200</option>
+                <option value="300">$300</option>
+                <option value="400">$400</option>
+                <option value="500">$500</option>
+                <option value="600">$600</option>
+                <option value="700">$700</option>
+                <option value="1000">$1000</option>
+            </select>
+            <select class="form-select mb-2" name="cpu">
+                <option selected>CPU Type</option>
+                <option value="Intel Core i9">Intel Core i9</option>
+                <option value="Intel Core i5">Intel Core i5</option>
+                <option value="Apple M Series">Apple M Series</option>
+            </select>
+            <select class="form-select mb-2" name="screenSize">
+                <option selected>Max Screen Size</option>
+                <option value="12">12"</option>
+                <option value="13">13"</option>
+                <option value="14">14"</option>
+                <option value="15">15"</option>
+                <option value="16">16"</option>
+            </select>
+            <select class="form-select mb-2" name="memory">
+                <option selected>Memory</option>
+                <option value="32">32GB</option>
+                <option value="16">16GB</option>
+                <option value="8">8GB</option>
+            </select>
+            <select class="form-select mb-2" name="ssd">
+                <option selected>SSD</option>
+                <option value="2">2 TB</option>
+                <option value="1">1 TB</option>
+                <option value="500">500 GB</option>
+            </select>
+        </form>
     </div>
     <div class="col-12 col-lg-9">
         <div class="p-3 border">

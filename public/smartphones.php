@@ -4,52 +4,57 @@
     include("./includes/nav.php");
 ?>
 
-<div class="row">
-    <div class="col-12 col-lg-2 border p-3">
-        <input type="text" class="form-control mb-2" placeholder="Search for a product"/>
-        <button class="btn btn-primary mb-2">Search</button>
+<div class="row justify-content-center mt-5">
 
-        <select class="form-select mb-2">
-            <option selected>Manufacturer</option>
-            <option value="SAMSUNG">SAMSUNG</option>
-            <option value="Apple">Apple</option>
-            <option value="ASUS">ASUS</option>
-            <option value="OnePlus">OnePlus</option>
-        </select>
-        <select class="form-select mb-2">
-            <option selected>Price Max</option>
-            <option value="100">$100</option>
-            <option value="200">$200</option>
-            <option value="300">$300</option>
-            <option value="1000">$1000</option>
-        </select>
-        <select class="form-select mb-2">
-            <option selected>Technology</option>
-            <option value="5G">5G</option>
-            <option value="4G LTE">4G LTE</option>
-            <option value="4G">4G</option>
-            <option value="3G">3G</option>
-            <option value="2G">2G</option>
-        </select>
-        <select class="form-select mb-2">
-            <option selected>Storage</option>
-            <option value="1">1 TB</option>
-            <option value="512">512GB</option>
-            <option value="128">128GB</option>
-            <option value="64">64GB</option>
-        </select>
-        <select class="form-select mb-2">
-            <option selected>RAM</option>
-            <option value="16">16GB</option>
-            <option value="12">12GB</option>
-            <option value="8">8GB</option>
-        </select>
-        <select class="form-select">
-            <option selected>Operating System</option>
-            <option value="Android">Android</option>
-            <option value="iOS">iOS</option>
-        </select>
+    <div class="col-12 col-lg-2 border p-3">
+        <form action="#" method="get">
+            <input type="text" class="form-control mb-2" name="productName" placeholder="Search for a product">
+            <input type="submit" value="Apply Filters" class="btn btn-primary mb-2">
+
+            <select class="form-select mb-2" name="manufacturer">
+                <option selected>Manufacturer</option>
+                <option value="SAMSUNG">SAMSUNG</option>
+                <option value="Apple">Apple</option>
+                <option value="ASUS">ASUS</option>
+                <option value="OnePlus">OnePlus</option>
+            </select>
+            <select class="form-select mb-2" name="price">
+                <option selected>Price Max</option>
+                <option value="100">$100</option>
+                <option value="200">$200</option>
+                <option value="300">$300</option>
+                <option value="1000">$1000</option>
+            </select>
+            <select class="form-select mb-2" name="technology">
+                <option selected>Technology</option>
+                <option value="5G">5G</option>
+                <option value="4G LTE">4G LTE</option>
+                <option value="4G">4G</option>
+                <option value="3G">3G</option>
+                <option value="2G">2G</option>
+            </select>
+            <select class="form-select mb-2" name="storage">
+                <option selected>Storage</option>
+                <option value="1">1 TB</option>
+                <option value="512">512GB</option>
+                <option value="128">128GB</option>
+                <option value="64">64GB</option>
+            </select>
+            <select class="form-select mb-2" name="ram">
+                <option selected>RAM</option>
+                <option value="16">16GB</option>
+                <option value="12">12GB</option>
+                <option value="8">8GB</option>
+            </select>
+            <select class="form-select" name="operatingSystem">
+                <option selected>Operating System</option>
+                <option value="Android">Android</option>
+                <option value="iOS">iOS</option>
+            </select>
+        </form>
     </div>
+
+
     <div class="col-12 col-lg-9">
         <div class="p-3 border">
             <div class="row justify-content-center">
