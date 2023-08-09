@@ -6,7 +6,7 @@
 
 <div class="row justify-content-center mt-5">
     <div class="col-12 col-lg-2 border p-3">
-        <form action="#" method="get">
+        <form action="#" method="GET">
             <input type="text" class="form-control mb-2" name="productName" placeholder="Search for a product">
             <input type="submit" value="Apply Filters" class="btn btn-primary mb-2">
 

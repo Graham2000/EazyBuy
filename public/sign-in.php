@@ -15,7 +15,7 @@
         </div>
 
         <a href="#">Forgot password</a><br>
-        <a href="#">Create an account</a><br>
+        <a href="./register.php">Create an account</a><br>
     </form>
 </div>
 
