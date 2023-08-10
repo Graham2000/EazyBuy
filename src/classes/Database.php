@@ -6,7 +6,7 @@
 
     class Database 
     {
-        public function openConn() 
+        protected function openConn() 
         {
             // Create connection
             $dsn = 'mysql:host=' . $_ENV['SERVERNAME']. ';dbname=' . $_ENV['DBNAME'];
