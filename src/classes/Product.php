@@ -35,17 +35,65 @@
 
         }
 
-        // params: filters
-        public function getProducts($categoryName): array
+        // params: filters getAllProducts
+        public function getAllProducts($categoryName): array
         {
-            $sql = "SELECT product_id, description, manufacturer, operating_system, price, ram, storage, technology 
-                    FROM product 
-                    INNER JOIN category
-                    ON product.product_id = category.category_id
-                    WHERE category_name = ?";
+            $sql = "SELECT product_id, product_name, manufacturer, 
+            cpu, price, operating_system, memory_size, 
+            memory_type, storage_size, storage_type, 
+            screen_size, screen_unit, img_primary, category_name
+            FROM product
+            INNER JOIN memory
+            ON product.memory_id = memory.memory_id
+            INNER JOIN storage
+            ON product.storage_id = storage.storage_id
+            INNER JOIN image
+            ON product.img_id = image.img_id
+            INNER JOIN screen
+            ON product.screen_id = screen.screen_id
+            INNER JOIN category
+            ON product.category_id = category.category_id
+            WHERE category_name = ?";
             $stmt = $this->openConn()->prepare($sql);
             $stmt->execute([$categoryName]);
             $products = $stmt->fetchAll();
+
+            return $products;
+        }
+
+        public function getFilteredProducts($categoryName, $productName, $manufacturer, $maxPrice, $cpu, $screenSize, $screenUnit, $memorySize, $memoryType, $storageSize, $storageType): array
+        {
+            $sql = "SELECT product_id, product_name, manufacturer, 
+                    cpu, price, operating_system, memory_size, 
+                    memory_type, storage_size, storage_type, 
+                    screen_size, screen_unit, img_primary, category_name
+                    FROM product
+                    INNER JOIN memory
+                    ON product.memory_id = memory.memory_id
+                    INNER JOIN storage
+                    ON product.storage_id = storage.storage_id
+                    INNER JOIN image
+                    ON product.img_id = image.img_id
+                    INNER JOIN screen
+                    ON product.screen_id = screen.screen_id
+                    INNER JOIN category
+                    ON product.category_id = category.category_id
+                    WHERE category_name = ?
+                    AND (product_name LIKE ? OR ? IS NULL)
+                    AND (manufacturer LIKE ? OR ? IS NULL)
+                    AND (price <= ? OR ? IS NULL)
+                    AND (cpu = ? OR ? IS NULL)
+                    AND (screen_size = ? OR ? IS NULL)
+                    AND (screen_unit = ? OR ? IS NULL)
+                    AND (memory_size = ? OR ? IS NULL)
+                    AND (memory_type = ? OR ? IS NULL)
+                    AND (storage_size = ? OR ? IS NULL)
+                    AND (storage_type = ? OR ? IS NULL)";
+
+            $stmt = $this->openConn()->prepare($sql);
+            $stmt->execute([$categoryName, '%'.$productName.'%', $productName, $manufacturer, $manufacturer, $maxPrice, $maxPrice, $cpu, $cpu, $screenSize, $screenSize, $screenUnit, $screenUnit, $memorySize, $memorySize, $memoryType, $memoryType, $storageSize, $storageSize, $storageType, $storageType]);
+            $products = $stmt->fetchAll();
+
             return $products;
         }
     }

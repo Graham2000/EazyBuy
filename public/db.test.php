@@ -17,10 +17,10 @@
 
         // Get all laptops
         $product = new Product();
-        $products = $product->getProducts("Laptops");
+        $products = $product->getProducts("Laptop");
 
         foreach($products as $product) {
-            echo $product["description"] . ' $' . $product['price'];
+            echo $product["description"] . ' $' . $product['price'] . "<br>";
         }
     ?>
 </body>
