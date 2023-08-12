@@ -1,29 +1,19 @@
-let preview = document.getElementsByClassName("preview");
-// Large preview
-let product = document.getElementsByClassName("productImg");
+// Thumbnails and main content
+let thumbnails = document.getElementsByClassName("preview");
+let oldMain = document.getElementsByClassName("main");
 
-// Images retireved from db preview!!
-let images = ["../img/charger.jpg", "../img/block.jpg", "../img/cc.jpg"];
+const changeProduct = (e) => {
+    // Hide old img and thumbnail
+    for (let i = 0; i < oldMain.length; i++) {
+        oldMain[i].style.display = "none";
+        thumbnails[i].classList.remove("border");
+    }
 
-// Update preview img
-const changeImg = (e) => {
-    let index = e.target.classList[1];
-    product[0].setAttribute("src", images[index]);
+    // Change main image
+    let mainClass = e.classList[0];
+    let mainImg = document.getElementsByClassName(mainClass)[0];
+    mainImg.style.display = "block";
 
-    // Update index for large preview
-    let oldPreview = product[0];
-    let oldIndex = product[0].classList[1];
-    oldPreview.classList.remove(oldIndex);
-    oldPreview.classList.add(index);
-    console.log(oldPreview.classList);
-
-    // Add border to selected img
-    preview[index].classList.add("border");
-    preview[oldIndex].classList.remove("border");
+    // Add thumbnail border
+    e.classList.add("border");
 }
-
-// Add event listener to each thumbnail img
-for (let i = 0; i < preview.length; i++) {
-    preview[i].addEventListener("click", changeImg);
-}
-

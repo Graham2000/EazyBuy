@@ -30,9 +30,18 @@
 
         }
 
-        public function getProduct($productId): string
+        public function getProduct($productID): array
         {
+            $sql = "SELECT product_name, price, img_cover, img_primary, img_secondary
+            FROM product
+            INNER JOIN image
+            ON product.img_id = image.img_id
+            WHERE product_id = ?";
+            $stmt = $this->openConn()->prepare($sql);
+            $stmt->execute([$productID]);
+            $product = $stmt->fetchAll();
 
+            return $product;
         }
 
         // params: filters getAllProducts
