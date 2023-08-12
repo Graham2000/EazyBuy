@@ -1,22 +1,15 @@
 <?php
     class User extends Database 
     {
+        
+
         private string $firstName;
         private string $lastName;
         private string $password;
         private string $email;
         private int $cartID;
-        
-        /*
-        function __construct(string $firstName, string $lastName, string $password, 
-                             string $email, int $cartID) 
-        {
-            $this->firstName = $firstName;
-            $this->lastName = $lastName;
-            $this->password = $password;
-            $this->email = $email;
-            $this->cartID = $cartID;
-        }*/
+
+
 
         public function setUser($firstName, $lastName, $password, $email, $cartID) 
         {
@@ -49,6 +42,10 @@
         {
             return $this->lastName;
         }
+
+
+
+
 
     }
 ?>

@@ -19,9 +19,9 @@
 
         // Insert cart
         $cart = new Cart();
-        $id = $cart->setCart(0, 0);
+        $cart->setCart(0, 0);
 
-        echo "LAST INSERT ID:: " . $id;
+        echo "LAST INSERT ID:: " . $cart->getCartID();
 
         // Get cart ID
         //$cartID = $cart->getGeneratedCartID();

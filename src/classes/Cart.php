@@ -1,15 +1,6 @@
 <?php
     class Cart extends User {
-        private int $item_count;
-        private float $total_price;
-
-        /*
-        function __construct(int $item_count, float $total_price) 
-        {
-            $this->item_count = $item_count;
-            $this->total_price = $total_price;
-        }
-        */
+        private int $cartID;
 
         public function setCart(int $item_count, float $item_price) 
         {
@@ -19,20 +10,19 @@
             
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$item_count, $item_price]);
-
-            $lastInsertID = $pdo->lastInsertId();
-            return $lastInsertID;
+            
+            // Set cartID
+            $this->setCartID($pdo->lastInsertId());
         }
 
-        // Get last generated id on register -- move to DB getLastInsertID(){}
-        public function getGeneratedCartID()
+        public function setCartID($cartID)
         {
-            $sql = "SELECT LAST_INSERT_ID() AS last_id";
-            $stmt = $this->openConn()->prepare($sql);
-            $stmt->execute();
-            $cartID = $stmt->fetchAll();
+            $this->cartID = $cartID;
+        }
 
-            return $cartID;
+        public function getCartID(): int
+        {
+            return $this->cartID;
         }
 
         public function getCart($cartId): string

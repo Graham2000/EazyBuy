@@ -6,6 +6,8 @@
 
     class Database 
     {
+
+        
         protected function openConn() 
         {
             // Create connection
