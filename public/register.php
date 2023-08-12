@@ -1,7 +1,11 @@
-<?php
+<?php declare(strict_types=1);
+    ini_set('display_errors', '1');
+    ini_set('display_startup_errors', '1');
+    error_reporting(E_ALL);
     $pageTitle = "Register";
     include("./includes/header.php");
     include("./includes/nav.php");
+    include("./includes/autoloader.php");
 
 
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -9,18 +13,21 @@
         $lName = $_POST['lName'];
         $email = $_POST['email'];
         $password = $_POST['password'];
+
+        // Validate user input
         
 
-        $servername = "localhost";
-        $username = " root@localhost ";
-        $password = "";
+        // Insert cart
+        $cart = new Cart();
+        $id = $cart->setCart(0, 0);
 
-        $conn = new mysqli($servername, $username, $password);
+        echo "LAST INSERT ID:: " . $id;
 
-        if ($conn->connect_error) {
-            die("connection failed: " . $conn->connect_error);
-        }
-        echo "connected!";
+        // Get cart ID
+        //$cartID = $cart->getGeneratedCartID();
+        //echo "CART ID: " . $cartID;
+
+        // Insert user
         
     }
 ?>

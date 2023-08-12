@@ -18,7 +18,16 @@
             $this->cartID = $cartID;
         }*/
 
-        public function selectUser(int $userId) 
+        public function setUser($firstName, $lastName, $password, $email, $cartID) 
+        {
+            $sql = "";
+            $stmt = $this->openConn()->prepare($sql);
+            $stmt->execute([$firstName, $lastName, $password, $email, $cartID]);
+        }
+
+
+
+        public function getUser(int $userId) 
         {
             $sql = "SELECT user_id, first_name, last_name FROM user WHERE user_id = ?";
             $stmt = $this->openConn()->prepare($sql);
