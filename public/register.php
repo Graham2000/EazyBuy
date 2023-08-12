@@ -15,20 +15,24 @@
         $password = $_POST['password'];
 
         // Validate user input
-        
 
+        // MAKE SURE THAT EMAIL/PASSWORD ARE NOT IN DB!!
+
+        // Hash password
+        $password = password_hash($password, PASSWORD_DEFAULT);
+        
         // Insert cart
         $cart = new Cart();
         $cart->setCart(0, 0);
 
-        echo "LAST INSERT ID:: " . $cart->getCartID();
-
         // Get cart ID
-        //$cartID = $cart->getGeneratedCartID();
-        //echo "CART ID: " . $cartID;
+        $cartID = $cart->getCartID();
 
         // Insert user
-        
+        $user = new User();
+        $user->setUser($fName, $lName, $email, $password, $cartID);
+
+        echo "Account created!";
     }
 ?>
 
@@ -45,7 +49,7 @@
         </div>
 
         <a href="#">Forgot password</a><br>
-        <a href="#">Sign in</a><br>
+        <a href="./sign-in.php">Sign in</a><br>
     </form>
 </div>
 
