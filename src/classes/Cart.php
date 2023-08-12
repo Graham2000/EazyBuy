@@ -11,7 +11,7 @@
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$item_count, $item_price]);
             
-            // Set cartID
+            // Set last inserted cartID
             $this->setCartID($pdo->lastInsertId());
         }
 
@@ -23,11 +23,6 @@
         public function getCartID(): int
         {
             return $this->cartID;
-        }
-
-        public function getCart($cartId): string
-        {
-
         }
     }
 ?>

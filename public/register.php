@@ -5,7 +5,7 @@
     $pageTitle = "Register";
     include("./includes/header.php");
     include("./includes/nav.php");
-    include("./includes/autoloader.php");
+    include("../src/bootstrap.php");
 
 
     if ($_SERVER['REQUEST_METHOD'] == "POST") {

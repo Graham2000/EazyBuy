@@ -6,7 +6,7 @@
     $pageTitle = "Laptops";
     include("./includes/header.php");
     include("./includes/nav.php");
-    include("./includes/autoloader.php");
+    include("../src/bootstrap.php");
 
     $product = new Product();
     $products = $product->getAllProducts("Laptop");

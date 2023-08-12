@@ -6,7 +6,7 @@
     $pageTitle = "Product";
     include("./includes/header.php");
     include("./includes/nav.php");
-    include("./includes/autoloader.php");
+    include("../src/bootstrap.php");
 
     if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
         $product = new Product();
