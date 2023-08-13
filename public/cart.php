@@ -1,7 +1,8 @@
 <?php
     $pageTitle = "Cart";
-    include("./includes/header.php");
-    include("./includes/nav.php");
+    //include("./includes/header.php");
+    //include("./includes/nav.php");
+    include(__DIR__."/../src/bootstrap.php");
 ?>
 
 <script src="./js/removeItem.js" defer></script>

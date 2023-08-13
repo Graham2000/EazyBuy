@@ -3,10 +3,11 @@
     ini_set('display_startup_errors', '1');
     error_reporting(E_ALL);
     $pageTitle = "Register";
-    include("./includes/header.php");
-    include("./includes/nav.php");
-    include("../src/bootstrap.php");
+    //include("./includes/header.php");
+    //include("./includes/nav.php");
+    include(__DIR__."/../src/bootstrap.php");
 
+    $errMsg = "";
 
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $fName = $_POST['fName'];
@@ -16,23 +17,31 @@
 
         // Validate user input
 
-        // MAKE SURE THAT EMAIL/PASSWORD ARE NOT IN DB!!
+        //$user = new User();
+        $isUnique = $user->emailUnique($email);
 
-        // Hash password
-        $password = password_hash($password, PASSWORD_DEFAULT);
-        
-        // Insert cart
-        $cart = new Cart();
-        $cart->setCart(0, 0);
+        // Email is unique
+        if ($isUnique) {
+            // Hash password
+            $password = password_hash($password, PASSWORD_DEFAULT);
+            
+            // Insert cart
+            $cart->setCart(0, 0);
 
-        // Get cart ID
-        $cartID = $cart->getCartID();
+            // Get cart ID
+            $cartID = $cart->getCartID();
 
-        // Insert user
-        $user = new User();
-        $user->setUser($fName, $lName, $email, $password, $cartID);
+            // Insert user
+            $user->setUser($fName, $lName, $email, $password, $cartID);
 
-        echo "Account created!";
+            // Set session
+            $_SESSION['userID'] = $user->getUserID();
+
+            // Change header
+            header("Location: ./index.php");
+        } else {
+            $errMsg = "This email is already in use";
+        }
     }
 ?>
 
@@ -43,6 +52,7 @@
         <input type="text" class="form-control mb-3" name="lName" placeholder="Last name" required="" autofocus="">
         <input type="email" id="inputEmail" class="form-control mb-3" name="email" placeholder="Email address" required="">
         <input type="password" id="inputPassword" class="form-control mb-2" name="password" placeholder="Password" required="">
+        <label class="text-danger"><?= $errMsg; ?></label>
 
         <div class="d-grid gap-2">
             <button class="btn btn-primary mt-1 mb-2" type="submit">Create Account</button>
