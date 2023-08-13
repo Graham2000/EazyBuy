@@ -4,9 +4,7 @@
     error_reporting(E_ALL);
 
     $pageTitle = "Laptops";
-    include("./includes/header.php");
-    include("./includes/nav.php");
-    include("../src/bootstrap.php");
+    include(__DIR__.'/../src/bootstrap.php');
 
     $product = new Product();
     $products = $product->getAllProducts("Laptop");

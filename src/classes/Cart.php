@@ -40,5 +40,30 @@
         {
             return $this->cartID;
         }
+
+
+        // Product functions
+
+        public function selectCartID($userID): array
+        {
+            $sql = "SELECT user.cart_id 
+                    FROM cart
+                    INNER JOIN user
+                    ON cart.cart_id = user.cart_id
+                    WHERE user_id = ?";
+            $stmt = $this->openConn()->prepare($sql);
+            $stmt->execute([$userID]);
+
+            $cartID = $stmt->fetch();
+            return $cartID;
+        }
+
+        public function insertCartProduct($cartID, $productID)
+        {
+            $sql = "INSERT INTO cart_product(cart_id, product_id)
+                    VALUES (?, ?)";
+            $stmt = $this->openConn()->prepare($sql);
+            $stmt->execute([$cartID, $productID]);
+        }
     }
 ?>

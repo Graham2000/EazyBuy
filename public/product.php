@@ -4,23 +4,34 @@
     error_reporting(E_ALL);
 
     $pageTitle = "Product";
-    include("./includes/header.php");
-    include("./includes/nav.php");
-    include("../src/bootstrap.php");
+    include(__DIR__.'/../src/bootstrap.php');
+    //include(__DIR__.'/insertQty.php');
 
     if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
         $product = new Product();
         $productData = $product->getProduct($_GET['id']);
-        
     } else {
         header("Location: ./index.php");
     }
+    
+    
+    // ajax to request insertQty.php
 
 ?>
 
 <script src="./js/changeProduct.js" defer></script>
+<script src="./js/addProduct.js" defer></script>
 
 <?php foreach($productData as $product) { ?>
+    <?php
+        // ISSET THAT USER IS LOGGED IN
+        echo '<script>
+                var productID;
+                var userID;
+                productID = "'.$product['product_id'].'";
+                userID = "'.$_SESSION['userID'].'";
+              </script>'
+    ?>
     <div class="container p-5 border">
         <div class="row">
             <div class="col-12 col-lg-6 border pt-3">
@@ -43,13 +54,13 @@
             RATING | Num of rating
             </div>
             <div class="col border text-center p-3">
-                <select class="form-select mb-3">
+                <select class="form-select mb-3" name="quantity" id='qty'>
                     <option selected>Choose quantity...</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                 </select>
-                <button class="btn btn-primary mb-2">Add to Cart</button>
+                <button id="addProduct" class="btn btn-primary mb-2">Add to Cart</button>
                 <button class="btn btn-secondary mb-2">Buy Now</button>
             </div>
         </div>
