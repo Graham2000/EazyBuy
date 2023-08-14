@@ -1,6 +1,5 @@
 // Update cart table and corresponding page content
-
-document.getElementById('addProduct').addEventListener('click', () => {
+const updateCart = () => {
     let qty = document.getElementById('qty').value;
 
     var postData = {
@@ -20,11 +19,11 @@ document.getElementById('addProduct').addEventListener('click', () => {
 
     .then(response => response.json())
     .then(data => {
-        console.log(data.itemCount);
         document.getElementById('itemCount').innerText = data.itemCount + ' Items';
         document.getElementById('totalPrice').innerText = '$' + data.totalPrice;
     })
 
-    // Add error catch
-
-});
+    .catch(() => {
+        alert("An error occurred! Please try again later.")
+    })
+}

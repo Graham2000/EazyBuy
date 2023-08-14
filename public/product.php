@@ -5,7 +5,6 @@
 
     $pageTitle = "Product";
     include(__DIR__.'/../src/bootstrap.php');
-    //include(__DIR__.'/insertQty.php');
 
     if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
         $product = new Product();
@@ -13,10 +12,6 @@
     } else {
         header("Location: ./index.php");
     }
-    
-    
-    // ajax to request insertQty.php
-
 ?>
 
 <script src="./js/changeProduct.js" defer></script>
@@ -25,13 +20,15 @@
 <?php foreach($productData as $product) { ?>
     <?php
         // ISSET THAT USER IS LOGGED IN
-        echo '<script>
-                var productID;
-                var userID;
-                productID = "'.$product['product_id'].'";
-                userID = "'.$_SESSION['userID'].'";
-                price = "'.$product['price'].'";
-              </script>'
+        if (isset($_SESSION['userID'])) {
+            echo '<script>
+            var productID;
+            var userID;
+            productID = "'.$product['product_id'].'";
+            userID = "'.$_SESSION['userID'].'";
+            price = "'.$product['price'].'";
+          </script>';
+        }
     ?>
     <div class="container p-5 border">
         <div class="row">
@@ -61,7 +58,7 @@
                     <option value="2">2</option>
                     <option value="3">3</option>
                 </select>
-                <button id="addProduct" class="btn btn-primary mb-2">Add to Cart</button>
+                <button id="addProduct" <?= isset($_SESSION['userID']) ? "onclick='updateCart()'" : "onclick='alert(`Please login before adding product to cart!`)'" ?> class="btn btn-primary mb-2">Add to Cart</button>
                 <button class="btn btn-secondary mb-2">Buy Now</button>
             </div>
         </div>
