@@ -19,7 +19,7 @@
         // On sign-in
         public function getCart($userID) 
         {
-            $sql = "SELECT item_count, total_price
+            $sql = "SELECT cart.cart_id, item_count, total_price
                     FROM cart
                     INNER JOIN user
                     ON cart.cart_id = user.cart_id
@@ -44,6 +44,7 @@
 
         // Product functions
 
+        /*
         public function selectCartID($userID): array
         {
             $sql = "SELECT user.cart_id 
@@ -56,7 +57,7 @@
 
             $cartID = $stmt->fetch();
             return $cartID;
-        }
+        }*/
 
         public function insertCartProduct($cartID, $productID)
         {
@@ -64,6 +65,15 @@
                     VALUES (?, ?)";
             $stmt = $this->openConn()->prepare($sql);
             $stmt->execute([$cartID, $productID]);
+        }
+
+        public function updateCart($itemCount, $totalPrice, $cartID)
+        {
+            $sql = "UPDATE cart 
+                    SET item_count = ?, total_price = ?
+                    WHERE cart_id = ?";
+            $stmt = $this->openConn()->prepare($sql);
+            $stmt->execute([$itemCount, $totalPrice, $cartID]);
         }
     }
 ?>

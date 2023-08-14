@@ -30,6 +30,7 @@
                 var userID;
                 productID = "'.$product['product_id'].'";
                 userID = "'.$_SESSION['userID'].'";
+                price = "'.$product['price'].'";
               </script>'
     ?>
     <div class="container p-5 border">

@@ -1,15 +1,16 @@
-// Send product quantity to insert PHP
+// Update cart table and corresponding page content
 
-document.getElementById('addProduct').addEventListener('click', (e) => {
+document.getElementById('addProduct').addEventListener('click', () => {
     let qty = document.getElementById('qty').value;
-    //console.log(qty.value);
+
     var postData = {
         qty: qty,
+        price: price * qty,
         userID: userID,
         productID: productID
     };
 
-    fetch("insertQty.php", {
+    fetch("./includes/updateCart.php", {
         method: 'POST',
         headers: {
             'CONTENT-Type': 'application/json'
@@ -17,13 +18,13 @@ document.getElementById('addProduct').addEventListener('click', (e) => {
         body: JSON.stringify(postData)
     })
 
-    .then(response = (status) => {
-        if (status.ok) {
-            alert("Product added to cart!");
-        }
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.itemCount);
+        document.getElementById('itemCount').innerText = data.itemCount + ' Items';
+        document.getElementById('totalPrice').innerText = '$' + data.totalPrice;
     })
 
     // Add error catch
 
-    // Update cart in nav to new values (SELECT)
 });
