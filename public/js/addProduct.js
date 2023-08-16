@@ -23,7 +23,9 @@ const updateCart = () => {
         document.getElementById('totalPrice').innerText = '$' + data.totalPrice;
     })
 
+    /*
     .catch(() => {
         alert("An error occurred! Please try again later.")
     })
+    */
 }

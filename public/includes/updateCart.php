@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $cart = new Cart();
     $cc = $cart->getCart($userID);
-    $cart->insertCartProduct($cc['cart_id'], $productID);
+    $cart->insertCartProduct($cc['cart_id'], $productID, $qty);
 
     $itemCount = $cc['item_count'] + $qty;
     $totalPrice = round($cc['total_price'] + $price, 2);
