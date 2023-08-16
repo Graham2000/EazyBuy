@@ -34,7 +34,7 @@
             </tbody>
         </table>
         <p><b>Total: $1433.00</b></p>
-        <p><a class="link-primary" href="./review.php">Leave a review</a></p>
+        <p><a class="link-primary" href="./product-review.php">Leave a review</a></p>
     </div>
 
     <div class="card p-3 mt-3">
@@ -66,7 +66,7 @@
             </tbody>
         </table>
         <p><b>Total: $1433.00</b></p>
-        <p><a class="link-primary" href="./review.php">Leave a review</a></p>
+        <p><a class="link-primary" href="./product-review.php">Leave a review</a></p>
     </div>
 
 
