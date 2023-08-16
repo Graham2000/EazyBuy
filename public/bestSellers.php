@@ -1,7 +1,6 @@
 <?php
     $pageTitle = "Products";
-    include("./includes/header.php");
-    include("./includes/nav.php");
+    include(__DIR__.'/../src/bootstrap.php');
 ?>
 
 <div class="container p-5">

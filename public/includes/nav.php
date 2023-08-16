@@ -45,6 +45,9 @@
             -->
           </ul>
         </li>
+        <li class="nav-item">
+          <a class="nav-link <?= $pageTitle == "Orders" ? "active" : "" ?>" href="./orders.php">My Orders</a>
+        </li>
       </ul>
 
       <div class="secondaryNav">
