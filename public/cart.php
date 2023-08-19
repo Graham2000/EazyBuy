@@ -53,6 +53,9 @@
                 <hr>
                 Total: $<span id="tp">0</span><br>
                 Paypal Checkout
+                <script src="https://www.paypal.com/sdk/js?client-id=<?= $_ENV['CLIENT_ID']; ?>&currency=USD"></script>
+                <div id="paypal-button-container"></div>
+                <script src="./js/checkout.js"></script>
             </div>
         </div>
     <?php } ?>
