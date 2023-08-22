@@ -105,5 +105,24 @@
             $stmt = $this->openConn()->prepare($sql);
             $stmt->execute([$cartProductID]);
         }
+
+        public function removeAllProducts($cartID)
+        {
+            $sql = "DELETE FROM cart_product 
+                WHERE cart_id = ?";
+            $stmt = $this->openConn()->prepare($sql);
+            $stmt->execute([$cartID]);
+        }
+
+        public function getUserCartID($userID)
+        {
+            $sql = "SELECT cart_id FROM user 
+                    WHERE user_id = ?";
+            $stmt = $this->openConn()->prepare($sql);
+            $stmt->execute([$userID]);
+
+            $cartID= $stmt->fetch();
+            return $cartID;
+        }
     }
 ?>

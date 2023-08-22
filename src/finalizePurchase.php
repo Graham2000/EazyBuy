@@ -40,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $item->setName($price['product_name'])
             ->setCurrency("USD")
             ->setQuantity($productQtys[$i])
+            ->setSku($productIDs[$i])
             ->setPrice($price['price']);
 
         $items[] = $item;

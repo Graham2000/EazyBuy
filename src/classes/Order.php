@@ -1,5 +1,5 @@
 <?php 
-class Order 
+class Order extends Database
 {
     private int $orderID;
 
