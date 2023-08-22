@@ -2,6 +2,9 @@
     ini_set('display_errors', '1');
     ini_set('display_startup_errors', '1');
     require __DIR__  . '/vendor/autoload.php';
+    use Dotenv\Dotenv;
+    $dotenv = Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
 
 if (isset($_GET['paymentId']) && isset($_GET['token']) && isset($_GET['PayerID'])) {
     // Retrieve payment ID, token, and Payer ID from the URL parameters
@@ -12,8 +15,8 @@ if (isset($_GET['paymentId']) && isset($_GET['token']) && isset($_GET['PayerID']
     // After Step 1
     $apiContext = new \PayPal\Rest\ApiContext(
         new \PayPal\Auth\OAuthTokenCredential(
-            $_ENV['CLIENT_ID'],     // ClientID
-            $_ENV['CLIENT_SECRET']     // ClientSecret
+            $_ENV['CLIENT_ID'],    // ClientID
+            $_ENV['CLIENT_SECRET']      // ClientSecret
         )
     );
 
@@ -30,6 +33,7 @@ if (isset($_GET['paymentId']) && isset($_GET['token']) && isset($_GET['PayerID']
         // Payment executed successfully, handle accordingly
         // $result contains payment execution details
         echo "<h1>Your order has been successfully processed!</h1>";
+        
     } catch (\PayPal\Exception\PayPalConnectionException $ex) {
         // Handle connection exception
         echo $ex;

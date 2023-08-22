@@ -27,12 +27,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $payer = new \PayPal\Api\Payer();
     $payer->setPaymentMethod('paypal');
 
-    $item1 = new Item();
-    $item1->setName("2018 MacBook Pro")
-            ->setCurrency('USD')
-            ->setQuantity(1)
-            ->setPrice(1000.00);
-
     $product = new Product();
 
     $TOTAL = 0;
@@ -64,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $redirectUrls = new \PayPal\Api\RedirectUrls();
     $redirectUrls->setReturnUrl("https://localhost/eazy-buy/src/executePayment.php")
-        ->setCancelUrl("https://example.com/your_cancel_url.html");
+        ->setCancelUrl("https://localhost/eazy-buy/public/order-canceled.php");
 
     $payment = new \PayPal\Api\Payment();
     $payment->setIntent('sale')
