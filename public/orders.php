@@ -4,7 +4,7 @@
     include(__DIR__.'/../src/bootstrap.php');
 ?>
 
-<div style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+<div style="display:flex; flex-direction:column; align-items:center;">
     <h3 class="pb-3 mt-5">Order History</h3>
     <?php 
         $order = new Order();

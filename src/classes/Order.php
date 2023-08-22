@@ -37,7 +37,8 @@ class Order extends Database
     {
         $sql = "SELECT user_order_id, order_total
                 FROM user_order 
-                WHERE user_id = ?";
+                WHERE user_id = ?
+                ORDER BY user_order_id DESC";
         $pdo = $this->openConn();
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$userID]);
@@ -57,5 +58,22 @@ class Order extends Database
         $stmt->execute([$orderID]);
         $orders = $stmt->fetchAll();
         return $orders;
+    }
+
+    // get order products
+    public function getOrderProducts($orderID)
+    {
+        $sql = "SELECT DISTINCT product_name, product.product_id
+                FROM user_order
+                INNER JOIN order_product 
+                ON user_order.user_order_id = order_product.user_order_id
+                INNER JOIN product 
+                ON order_product.product_id = product.product_id
+                WHERE user_order.user_order_id = ?";
+        $pdo = $this->openConn();
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$orderID]);
+        $productNames = $stmt->fetchAll();
+        return $productNames;
     }
 }

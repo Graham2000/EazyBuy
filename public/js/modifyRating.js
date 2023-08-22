@@ -18,10 +18,15 @@ let stars = document.getElementsByClassName('star');
 const modifyRating = (e) => {
     let starPos = getPosition(e);
 
+    let ratingVal = 0;
     // Fill in prev stars
     for (let i = starPos; i >= 0; i--) {
         stars[i].style.color = '#FFDF00';
+        ratingVal++;
     }
+
+    document.getElementById('ratingVal').value = ratingVal;
+    //console.log(ratingVal);
 
     // Remove filled in stars to right
     for (let i = starPos + 1; i < 5; i++) {
