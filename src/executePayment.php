@@ -45,7 +45,9 @@ if (isset($_GET['paymentId']) && isset($_GET['token']) && isset($_GET['PayerID']
 
         // Add order record
         $order = new Order();
-        $order->setOrder($_SESSION['userID']);
+        $orderTotal = $result->transactions[0]->amount->total;
+        //$orderTotal = 120;
+        $order->setOrder($orderTotal, $_SESSION['userID']);
 
         $orderID = $order->getOrderID();
 
