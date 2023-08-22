@@ -19,11 +19,11 @@
         <div class="row">
             <div class="col">
                 <?php foreach($contents as $content) { ?>
-
+                    <input class="pID" value="<?= $content['product_id']; ?>" style="display:none;">
                     <div class="col-12 col-lg-9 border p-5">
                         <h5><?= $content['product_name']; ?></h5>
                         <label>Quantity</label>
-                        <select class="form-select mb-3">
+                        <select class="form-select mb-3 qty">
                             <option value="1" <?= $content['quantity'] == 1 ? 'selected' : ''; ?> >1</option>
                             <option value="2" <?= $content['quantity'] == 2 ? 'selected' : ''; ?> >2</option>
                             <option value="3" <?= $content['quantity'] == 3 ? 'selected' : ''; ?> >3</option>
@@ -40,7 +40,9 @@
                 Item(s): <span id="tc"><?= $content['item_count']; ?></span>
                 <hr>
                 Total: $<span id="tp"><?= $content['total_price']; ?></span><br>
-                Paypal Checkout
+                Paypal Checkout<br>
+                <button id="checkout" class="btn btn-primary">Check Out Now</button>
+                <script src="./js/checkout.js" defer></script>
             </div>
         </div>
     <?php } else { ?>
@@ -53,9 +55,11 @@
                 <hr>
                 Total: $<span id="tp">0</span><br>
                 Paypal Checkout
+                <!--
                 <script src="https://www.paypal.com/sdk/js?client-id=<?= $_ENV['CLIENT_ID']; ?>&currency=USD"></script>
                 <div id="paypal-button-container"></div>
                 <script src="./js/checkout.js"></script>
+                --->
             </div>
         </div>
     <?php } ?>

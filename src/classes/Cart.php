@@ -33,7 +33,7 @@
 
         public function getCartContents($userID): array
         {
-            $sql = "SELECT product_name, item_count, total_price, user.cart_id,
+            $sql = "SELECT product_name, item_count, total_price, user.cart_id, product.product_id,
                            img_cover, price, item_count, quantity, cart_product_id
                     FROM product
                     INNER JOIN image 

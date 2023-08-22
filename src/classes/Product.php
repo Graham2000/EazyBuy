@@ -43,6 +43,18 @@
 
             return $product;
         }
+        
+        public function getPrice($productID): array
+        {
+            $sql = "SELECT price, product_name
+                    FROM product
+                    WHERE product_id = ?";
+            $stmt = $this->openConn()->prepare($sql);
+            $stmt->execute([$productID]);
+            $price = $stmt->fetch();
+
+            return $price;
+        }
 
         // params: filters getAllProducts
         public function getAllProducts($categoryName): array

@@ -1,40 +1,33 @@
-paypal.Buttons({
+const checkout = () => {
+  let productIDs = [];
+  let productQtys = [];
 
-    createOrder() {
+  let ids = document.getElementsByClassName('pID');
+  let qtys = document.getElementsByClassName('qty');
+  
+  for (let i = 0; i < qtys.length; i++) {
+    productIDs.push(ids[i].value);
+    productQtys.push(qtys[i].value);
+  }
 
-      return fetch("/my-server/create-paypal-order", {
+  var postData = {
+    productIDs: productIDs,
+    productQtys: productQtys,
+  };
 
-        method: "POST",
+  fetch("../src/finalizePurchase.php", {
+      method: 'POST',
+      headers: {
+          'CONTENT-Type': 'application/json'
+      },
+      body: JSON.stringify(postData)
+  })
+  
+  .then(response => response.json())
+  .then(data => {
+    //console.log(data)
+    window.location = data.url;
+  })
+}
 
-        headers: {
-
-          "Content-Type": "application/json",
-
-        },
-
-        body: JSON.stringify({
-
-          cart: [
-
-            {
-
-              sku: "YOUR_PRODUCT_STOCK_KEEPING_UNIT",
-
-              quantity: "YOUR_PRODUCT_QUANTITY",
-
-            },
-
-          ]
-
-        })
-
-      })
-
-      .then((response) => response.json())
-
-      .then((order) => order.id);
-
-    }
-
-}).render('#paypal-button-container');
-
+document.getElementById('checkout').addEventListener('click', checkout);
