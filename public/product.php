@@ -71,13 +71,13 @@
           </script>';
         }
     ?>
-    <div class="container p-5 border">
+    <div class="container p-5">
         <div class="row">
-            <div class="col-12 col-lg-6 border pt-3">
+            <div class="col-12 col-lg-6 pt-3">
                 <img class="coverImg main" src="data:image/jpeg;base64,<?= base64_encode($product["img_cover"]); ?>" style="width:100%;">
                 <img class="primaryImg main" src="data:image/jpeg;base64,<?= base64_encode($product["img_primary"]); ?>" style="width:100%; display:none;">
                 <img class="secondaryImg main" src="data:image/jpeg;base64,<?= base64_encode($product["img_secondary"]); ?>" style="width:100%; display:none;">
-                <div class="border p-3 m-3 text-center">
+                <div class="p-3 m-3 text-center">
 
                     <img onclick="changeProduct(this)" class="coverImg preview border p-2 w-25" src="data:image/jpeg;base64,<?= base64_encode($product["img_cover"]); ?>">
                     <img onclick="changeProduct(this)" class="primaryImg preview p-2 w-25" src="data:image/jpeg;base64,<?= base64_encode($product["img_primary"]); ?>">
@@ -85,7 +85,7 @@
 
                 </div>
             </div>
-            <div class="col border">
+            <div class="col">
                 <p class="mt-3"><b>
                 <h3><?= $product['product_name']; ?></h3>
                 </b><p>
@@ -100,6 +100,15 @@
 
                 <h5>Operating System</h5>
                 <p><?= $product['operating_system']; ?></p>
+
+                <h5>Screen Size</h5>
+                <p><?= $product['screen_size'] . ' ' . $product['screen_unit']; ?></p>
+
+                <h5>Memory</h5>
+                <p><?= $product['memory_size'] . ' ' . $product['memory_type']; ?></p>
+
+                <h5>Storage</h5>
+                <p><?= $product['storage_size'] . ' ' . $product['storage_type']; ?></p>
             </div>
             <div class="col border text-center p-3">
                 <select class="form-select mb-3" name="quantity" id='qty'>

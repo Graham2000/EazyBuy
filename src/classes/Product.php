@@ -32,11 +32,21 @@
 
         public function getProduct($productID): array
         {
-            $sql = "SELECT product_id, product_name, manufacturer, operating_system, price, img_cover, img_primary, img_secondary
-            FROM product
-            INNER JOIN image
-            ON product.img_id = image.img_id
-            WHERE product_id = ?";
+            $sql = "SELECT product_id, product_name, manufacturer, 
+                        operating_system, price, img_cover, 
+                        img_primary, img_secondary, screen_size, 
+                        screen_unit, memory_size, memory_type, 
+                        storage_size, storage_type
+                    FROM product
+                    INNER JOIN image
+                    ON product.img_id = image.img_id
+                    INNER JOIN screen 
+                    ON product.screen_id = screen.screen_id
+                    INNER JOIN memory 
+                    ON product.memory_id = memory.memory_id
+                    INNER JOIN storage 
+                    ON product.storage_id = storage.storage_id
+                    WHERE product_id = ?";
             $stmt = $this->openConn()->prepare($sql);
             $stmt->execute([$productID]);
             $product = $stmt->fetchAll();
