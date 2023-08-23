@@ -20,4 +20,15 @@ class Review extends Database {
         $reviews = $stmt->fetchAll();
         return $reviews;
     }
+
+    public function getRating($productID): array
+    {
+        $sql = "SELECT rating
+                FROM review 
+                WHERE product_id = ?";
+        $stmt = $this->openConn()->prepare($sql);
+        $stmt->execute([$productID]);
+        $ratings = $stmt->fetchAll();
+        return $ratings;
+    }
 }

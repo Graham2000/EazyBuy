@@ -15,6 +15,41 @@
 
         $reviewCount = 0;
 
+        $rating = 0;
+        $count = 0;
+        $ratings = $review->getRating($_GET['id']);
+        foreach ($ratings as $starRating) {
+            //echo $rating['rating'];
+            $starRating = $starRating['rating'];
+            if ($starRating === 1) {
+                $rating += 20;
+            } else if ($starRating === 2) {
+                $rating += 40;
+            } else if ($starRating === 3) {
+                $rating += 60;
+            } else if ($starRating === 4) {
+                $rating += 80;
+            } else if ($starRating === 5) {
+                $rating += 100;
+            }
+            $count++;
+        }
+
+        $average = $rating / $count;
+        $star = "";
+
+        if ($average >= 20 && $average < 30) {
+            $star = "★";
+        } else if ($average >= 30 && $average < 50) {
+            $star = "★★";
+        } else if ($average >= 50 && $average < 70) {
+            $star = "★★★";
+        } else if ($average >= 70 && $average < 90) {
+            $star = "★★★★";
+        } else {
+            $star = "★★★★★";
+        }
+
     } else {
         header("Location: ./index.php");
     }
@@ -51,11 +86,20 @@
                 </div>
             </div>
             <div class="col border">
-            <p class="mt-3"><b>
-            <?= $product['product_name']; ?>
-            </b><p>
-            <br>
-            RATING | Num of rating
+                <p class="mt-3"><b>
+                <h3><?= $product['product_name']; ?></h3>
+                </b><p>
+                <?= $star . ' (' . $count . ' reviews)'?>
+
+
+                <h5>Unit Price</h5>
+                <p>$<?= $product['price']; ?></p>
+
+                <h5>Manufacturer</h5>
+                <p><?= $product['manufacturer']; ?></p>
+
+                <h5>Operating System</h5>
+                <p><?= $product['operating_system']; ?></p>
             </div>
             <div class="col border text-center p-3">
                 <select class="form-select mb-3" name="quantity" id='qty'>
@@ -68,6 +112,7 @@
                 <button class="btn btn-secondary mb-2">Buy Now</button>
             </div>
         </div>
+        <!---
         <div class="row mt-5">
             <h3 class="ps-0">Product Information</h3>
 
@@ -102,10 +147,32 @@
                 </tbody>
             </table>
         </div>
+        --->
         <div class="row mt-5">
             <h3 class="ps-0">Reviews</h3>
 
             <?php foreach ($reviews as $review) { ?>
+                <?php 
+                /*
+                    $starRating = $review['rating'];
+                    echo $starRating;
+
+                    if ($starRating === 1) {
+                        $rating += 20;
+                    } else if ($starRating === 2) {
+                        $rating += 40;
+                    } else if ($starRating === 3) {
+                        $rating += 60;
+                    } else if ($starRating === 4) {
+                        $rating += 80;
+                    } else if ($starRating === 5) {
+                        $rating += 100;
+                    }
+                    */
+
+                ?>
+
+
                 <i class="ps-0"><?= $review['first_name'] . ' ' . $review['last_name']; ?></i> <br>
                 <div class="text-start ps-0">
                     <?php   

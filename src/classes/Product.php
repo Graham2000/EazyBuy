@@ -32,7 +32,7 @@
 
         public function getProduct($productID): array
         {
-            $sql = "SELECT product_id, product_name, price, img_cover, img_primary, img_secondary
+            $sql = "SELECT product_id, product_name, manufacturer, operating_system, price, img_cover, img_primary, img_secondary
             FROM product
             INNER JOIN image
             ON product.img_id = image.img_id
