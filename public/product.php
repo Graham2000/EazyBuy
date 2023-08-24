@@ -10,45 +10,16 @@
         $product = new Product();
         $productData = $product->getProduct($_GET['id']);
 
+        $reviewCount = 0;
+
         $review = new Review();
         $reviews = $review->getReviews($_GET['id']);
 
-        $reviewCount = 0;
-
-        $rating = 0;
-        $count = 0;
-        $ratings = $review->getRating($_GET['id']);
-        foreach ($ratings as $starRating) {
-            //echo $rating['rating'];
-            $starRating = $starRating['rating'];
-            if ($starRating === 1) {
-                $rating += 20;
-            } else if ($starRating === 2) {
-                $rating += 40;
-            } else if ($starRating === 3) {
-                $rating += 60;
-            } else if ($starRating === 4) {
-                $rating += 80;
-            } else if ($starRating === 5) {
-                $rating += 100;
-            }
-            $count++;
-        }
-
-        $average = $rating / $count;
-        $star = "";
-
-        if ($average >= 20 && $average < 30) {
-            $star = "★";
-        } else if ($average >= 30 && $average < 50) {
-            $star = "★★";
-        } else if ($average >= 50 && $average < 70) {
-            $star = "★★★";
-        } else if ($average >= 70 && $average < 90) {
-            $star = "★★★★";
-        } else {
-            $star = "★★★★★";
-        }
+        $totalRating = $review->getTotalRating($review, $_GET['id']);
+        // Get number of reviews
+        $totalReviewCount = $review->getReviewCount();
+        // Get stars
+        $starRating = $review->getStarRating($totalReviewCount, $totalRating);
 
     } else {
         header("Location: ./index.php");
@@ -90,7 +61,7 @@
                 <p class="mt-3"><b>
                 <h3><?= $product['product_name']; ?></h3>
                 </b><p>
-                <?= $star . ' (' . $count . ' reviews)'?>
+                <?= $starRating . ' (' . $totalReviewCount . ' reviews)'?>
 
                 <h5>Unit Price</h5>
                 <p>$<?= $product['price']; ?></p>
