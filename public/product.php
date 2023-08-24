@@ -65,6 +65,7 @@
             echo '<script>
             var productID;
             var userID;
+            var checkout = true;
             productID = "'.$product['product_id'].'";
             userID = "'.$_SESSION['userID'].'";
             price = "'.$product['price'].'";
@@ -72,25 +73,24 @@
         }
     ?>
     <div class="container p-5">
-        <div class="row">
+        <div class="row shadow rounded p-3">
             <div class="col-12 col-lg-6 pt-3">
-                <img class="coverImg main" src="data:image/jpeg;base64,<?= base64_encode($product["img_cover"]); ?>" style="width:100%;">
-                <img class="primaryImg main" src="data:image/jpeg;base64,<?= base64_encode($product["img_primary"]); ?>" style="width:100%; display:none;">
-                <img class="secondaryImg main" src="data:image/jpeg;base64,<?= base64_encode($product["img_secondary"]); ?>" style="width:100%; display:none;">
+                <img class="coverImg main rounded" src="data:image/jpeg;base64,<?= base64_encode($product["img_cover"]); ?>" style="width:100%;">
+                <img class="primaryImg main rounded" src="data:image/jpeg;base64,<?= base64_encode($product["img_primary"]); ?>" style="width:100%; display:none;">
+                <img class="secondaryImg main rounded" src="data:image/jpeg;base64,<?= base64_encode($product["img_secondary"]); ?>" style="width:100%; display:none;">
                 <div class="p-3 m-3 text-center">
 
-                    <img onclick="changeProduct(this)" class="coverImg preview border p-2 w-25" src="data:image/jpeg;base64,<?= base64_encode($product["img_cover"]); ?>">
-                    <img onclick="changeProduct(this)" class="primaryImg preview p-2 w-25" src="data:image/jpeg;base64,<?= base64_encode($product["img_primary"]); ?>">
-                    <img onclick="changeProduct(this)" class="secondaryImg preview p-2 w-25" src="data:image/jpeg;base64,<?= base64_encode($product["img_secondary"]); ?>">
+                    <img onclick="changeProduct(this)" class="coverImg preview border p-2 w-25 rounded" src="data:image/jpeg;base64,<?= base64_encode($product["img_cover"]); ?>">
+                    <img onclick="changeProduct(this)" class="primaryImg preview p-2 w-25 rounded" src="data:image/jpeg;base64,<?= base64_encode($product["img_primary"]); ?>">
+                    <img onclick="changeProduct(this)" class="secondaryImg preview p-2 w-25 rounded" src="data:image/jpeg;base64,<?= base64_encode($product["img_secondary"]); ?>">
 
                 </div>
             </div>
-            <div class="col">
+            <div class="col-12 col-md-6 col-lg-3 p-3">
                 <p class="mt-3"><b>
                 <h3><?= $product['product_name']; ?></h3>
                 </b><p>
                 <?= $star . ' (' . $count . ' reviews)'?>
-
 
                 <h5>Unit Price</h5>
                 <p>$<?= $product['price']; ?></p>
@@ -110,7 +110,7 @@
                 <h5>Storage</h5>
                 <p><?= $product['storage_size'] . ' ' . $product['storage_type']; ?></p>
             </div>
-            <div class="col border text-center p-3">
+            <div class="col text-center p-3 border rounded m-3 p-3">
                 <select class="form-select mb-3" name="quantity" id='qty'>
                     <option selected>Choose quantity...</option>
                     <option value="1">1</option>
@@ -118,70 +118,14 @@
                     <option value="3">3</option>
                 </select>
                 <button id="addProduct" <?= isset($_SESSION['userID']) ? "onclick='updateCart()'" : "onclick='alert(`Please login before adding product to cart!`)'" ?> class="btn btn-primary mb-2">Add to Cart</button>
-                <button class="btn btn-secondary mb-2">Buy Now</button>
+                <button <?= isset($_SESSION['userID']) ? "onclick='updateCart(checkout)'" : "onclick='alert(`Please login before adding product to cart!`)'" ?> class="btn btn-secondary mb-2">Buy Now</button>
             </div>
         </div>
-        <!---
-        <div class="row mt-5">
-            <h3 class="ps-0">Product Information</h3>
 
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Header1</th>
-                        <th scope="col">Header2</th>
-                        <th scope="col">Header3</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>data</td>
-                        <td>data</td>
-                        <td>data</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>data</td>
-                        <td>data</td>
-                        <td>data</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>data</td>
-                        <td>data</td>
-                        <td>data</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        --->
-        <div class="row mt-5">
+        <div class="row mt-5 p-5 shadow rounded">
             <h3 class="ps-0">Reviews</h3>
 
             <?php foreach ($reviews as $review) { ?>
-                <?php 
-                /*
-                    $starRating = $review['rating'];
-                    echo $starRating;
-
-                    if ($starRating === 1) {
-                        $rating += 20;
-                    } else if ($starRating === 2) {
-                        $rating += 40;
-                    } else if ($starRating === 3) {
-                        $rating += 60;
-                    } else if ($starRating === 4) {
-                        $rating += 80;
-                    } else if ($starRating === 5) {
-                        $rating += 100;
-                    }
-                    */
-
-                ?>
-
-
                 <i class="ps-0"><?= $review['first_name'] . ' ' . $review['last_name']; ?></i> <br>
                 <div class="text-start ps-0">
                     <?php   
@@ -208,8 +152,6 @@
         </div>
     </div>
 <?php } ?>
-
-
 
 <?php
     include("./includes/footer.php");

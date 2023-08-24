@@ -1,5 +1,5 @@
 // Update cart table and corresponding page content
-const updateCart = () => {
+const updateCart = (checkout) => {
     let qty = document.getElementById('qty').value;
 
     var postData = {
@@ -23,9 +23,7 @@ const updateCart = () => {
         document.getElementById('totalPrice').innerText = '$' + data.totalPrice;
     })
 
-    /*
-    .catch(() => {
-        alert("An error occurred! Please try again later.")
-    })
-    */
+    if (checkout) {
+        window.location = "./cart.php";
+    }
 }
