@@ -76,6 +76,7 @@ class Review extends Database {
 
     function getStarRating($count, $rating): string 
     {
+        if ($count === 0) return "";
         $average = $rating / $count;
         $star = "";
     

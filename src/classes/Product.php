@@ -92,6 +92,7 @@
             return $products;
         }
 
+
         public function getFilteredProducts($categoryName, $productName, $manufacturer, $maxPrice, $cpu, $screenSize, $screenUnit, $memorySize, $memoryType, $storageSize, $storageType): array
         {
             $sql = "SELECT product_id, product_name, manufacturer, 

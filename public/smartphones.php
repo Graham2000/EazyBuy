@@ -1,192 +1,132 @@
 <?php
     $pageTitle = "Smartphones";
-    include("./includes/header.php");
-    include("./includes/nav.php");
+    include(__DIR__.'/../src/bootstrap.php');
+    ini_set('display_errors', '1');
+    ini_set('display_startup_errors', '1');
+    error_reporting(E_ALL);
+
+    $product = new Product();
+    $products = $product->getAllProducts("Smartphone");
+
+    if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['manufacturer'])) {
+
+        $memory = $_GET['memory'];
+        if ($memory != "") {
+            $memory = explode(" ", $_GET['memory']);
+        } else {
+            $memory = array(NULL, NULL);
+        }
+
+        $storage = $_GET['storage'];
+        if ($storage != "") {
+            $storage = explode(" ", $_GET['storage']);
+        } else {
+            $storage = array(NULL, NULL);
+        }
+        
+        // Apply product filters
+        $productName = $_GET['productName'];
+        $manufacturer = $_GET['manufacturer'];
+        $maxPrice = $_GET['price'];
+
+        trim($productName) == "" && $productName = NULL;
+        trim($manufacturer) == "" && $manufacturer = NULL;
+        trim($maxPrice) == "" && $maxPrice = NULL;
+
+        // Add rest of filters
+        
+        $products = $product->getFilteredProducts(  "Smartphone", $productName, $manufacturer, 
+                                                    $maxPrice, NULL, NULL, NULL, $memory[0], 
+                                                    $memory[1], $storage[0], $storage[1]
+                                                 );
+    }
 ?>
 
 <div class="row justify-content-center mt-5">
 
     <div class="col-12 col-lg-2 border p-3">
-        <form action="#" method="GET">
+        <form action="./smartphones.php" method="GET">
             <input type="text" class="form-control mb-2" name="productName" placeholder="Search for a product">
             <input type="submit" value="Apply Filters" class="btn btn-primary mb-2">
 
             <select class="form-select mb-2" name="manufacturer">
-                <option selected>Manufacturer</option>
+                <option value="" selected>Manufacturer</option>
                 <option value="SAMSUNG">SAMSUNG</option>
                 <option value="Apple">Apple</option>
                 <option value="ASUS">ASUS</option>
                 <option value="OnePlus">OnePlus</option>
             </select>
             <select class="form-select mb-2" name="price">
-                <option selected>Price Max</option>
+                <option value="" selected>Price Max</option>
                 <option value="100">$100</option>
                 <option value="200">$200</option>
                 <option value="300">$300</option>
                 <option value="1000">$1000</option>
             </select>
+            <!--
             <select class="form-select mb-2" name="technology">
-                <option selected>Technology</option>
+                <option value="" selected>Technology</option>
                 <option value="5G">5G</option>
                 <option value="4G LTE">4G LTE</option>
                 <option value="4G">4G</option>
                 <option value="3G">3G</option>
                 <option value="2G">2G</option>
             </select>
+            --->
             <select class="form-select mb-2" name="storage">
-                <option selected>Storage</option>
-                <option value="1">1 TB</option>
-                <option value="512">512GB</option>
-                <option value="128">128GB</option>
-                <option value="64">64GB</option>
+                <option value="" selected>Storage</option>
+                <option value="1 TB">1 TB</option>
+                <option value="512 GB">512GB</option>
+                <option value="128 GB">128GB</option>
+                <option value="64 GB">64GB</option>
             </select>
-            <select class="form-select mb-2" name="ram">
-                <option selected>RAM</option>
-                <option value="16">16GB</option>
-                <option value="12">12GB</option>
-                <option value="8">8GB</option>
+            <select class="form-select mb-2" name="memory">
+                <option value="" selected>RAM</option>
+                <option value="16 GB">16GB</option>
+                <option value="12 GB">12GB</option>
+                <option value="8 GB">8GB</option>
             </select>
-            <select class="form-select" name="operatingSystem">
-                <option selected>Operating System</option>
+
+            <!--
+            <select class="form-select" name="os">
+                <option value="" selected>Operating System</option>
                 <option value="Android">Android</option>
                 <option value="iOS">iOS</option>
             </select>
+            --->
         </form>
     </div>
 
+    <div class="col-12 col-lg-9 ms-4">
+        <div class="row p-3 border">
+            <?php foreach ($products as $product) { ?>
+                <?php 
+                    $price = explode(".", $product["price"]);
+                    $whole = $price[0];
+                    $part = $price[1];
 
-    <div class="col-12 col-lg-9">
-        <div class="p-3 border">
-            <div class="row justify-content-center">
-                <div class="col-12 col-md-5 col-lg border p-2 m-2">
-                    <img src="./img/cc.jpg" style="width:100%"></img>
+                    $review = new Review();
+                    $totalRating = $review->getTotalRating($review, $product['product_id']);
 
-                    <div class="text-start ps-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill ms-0" viewBox="0 0 16 16">
-                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                        </svg>
+                    // Get number of reviews
+                    $totalReviewCount = $review->getReviewCount();
+                    // Get stars
+                    $starRating = $review->getStarRating($totalReviewCount, $totalRating);
+                ?>
+                <div class="col-11 col-md-5 col-lg-3 p-0 m-2 border">
+                    <img src="data:image/jpeg;base64,<?= base64_encode($product["img_primary"]); ?>" style="width:100%"></img>
+
+                    <div class="text-start ps-0 mt-2 ms-2">
+                        <?= $starRating . ' (' . $totalReviewCount . ' reviews)'; ?>
                     </div>
 
-                    <a href="./product.php">White 9" iPhone Charger</a>
-                    <p class="priceWhole mt-2">$115<span class="text-muted pricePart">.99</span></p>
+                    <a class="ms-2" href="./product.php?id=<?= $product["product_id"]; ?>"><?= $product["product_name"]; ?></a>
+                    <p class="priceWhole mt-2 ms-2"><?= '$' . $whole; ?><span class="text-muted pricePart"><?= '.' . $part; ?></span></p>
                 </div>
-                <div class="col-12 col-md-5 col-lg border p-2 m-2">
-                    <img src="./img/cc.jpg" style="width:100%"></img>
-
-                    <div class="text-start ps-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill ms-0" viewBox="0 0 16 16">
-                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                        </svg>
-                    </div>
-
-                    <a href="./product.php">White 9" iPhone Charger</a>
-                    <p class="priceWhole mt-2">$115<span class="text-muted pricePart">.99</span></p>
-                </div>
-                <div class="col-12 col-md-5 col-lg border p-2 m-2">
-                    <img src="./img/cc.jpg" style="width:100%"></img>
-
-                    <div class="text-start ps-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill ms-0" viewBox="0 0 16 16">
-                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                        </svg>
-                    </div>
-
-                    <a href="./product.php">White 9" iPhone Charger</a>
-                    <p class="priceWhole mt-2">$115<span class="text-muted pricePart">.99</span></p>
-                </div>
-                <div class="col-12 col-md-5 col-lg border p-2 m-2">
-                    <img src="./img/cc.jpg" style="width:100%"></img>
-
-                    <div class="text-start ps-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill ms-0" viewBox="0 0 16 16">
-                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                        </svg>
-                    </div>
-
-                    <a href="./product.php">White 9" iPhone Charger</a>
-                    <p class="priceWhole mt-2">$115<span class="text-muted pricePart">.99</span></p>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-12 col-md-5 col-lg border p-2 m-2">
-                    <img src="./img/cc.jpg" style="width:100%"></img>
-
-                    <div class="text-start ps-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill ms-0" viewBox="0 0 16 16">
-                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                        </svg>
-                    </div>
-
-                    <a href="./product.php">White 9" iPhone Charger</a>
-                    <p class="priceWhole mt-2">$115<span class="text-muted pricePart">.99</span></p>
-                </div>
-                <div class="col-12 col-md-5 col-lg border p-2 m-2">
-                    <img src="./img/cc.jpg" style="width:100%"></img>
-
-                    <div class="text-start ps-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill ms-0" viewBox="0 0 16 16">
-                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                        </svg>
-                    </div>
-
-                    <a href="./product.php">White 9" iPhone Charger</a>
-                    <p class="priceWhole mt-2">$115<span class="text-muted pricePart">.99</span></p>
-                </div>
-                <div class="col-12 col-md-5 col-lg border p-2 m-2">
-                    <img src="./img/cc.jpg" style="width:100%"></img>
-
-                    <div class="text-start ps-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill ms-0" viewBox="0 0 16 16">
-                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                        </svg>
-                    </div>
-
-                    <a href="./product.php">White 9" iPhone Charger</a>
-                    <p class="priceWhole mt-2">$115<span class="text-muted pricePart">.99</span></p>
-                </div>
-                <div class="col-12 col-md-5 col-lg border p-2 m-2">
-                    <img src="./img/cc.jpg" style="width:100%"></img>
-
-                    <div class="text-start ps-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill ms-0" viewBox="0 0 16 16">
-                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                        </svg>
-                    </div>
-
-                    <a href="./product.php">White 9" iPhone Charger</a>
-                    <p class="priceWhole mt-2">$115<span class="text-muted pricePart">.99</span></p>
-                </div>
-            </div>
+            <?php } ?>
         </div>
     </div>
 </div>
-
-
-
 
 <?php
     include("./includes/footer.php");
