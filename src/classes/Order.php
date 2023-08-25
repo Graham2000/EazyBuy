@@ -4,13 +4,13 @@ class Order extends Database
     private int $orderID;
 
     // Create new order for user
-    public function setOrder($orderTotal, $userID)
+    public function setOrder($orderTotal, $payID, $userID)
     {
-        $sql = "INSERT INTO user_order (order_total, user_id)
-                VALUES (?, ?)";
+        $sql = "INSERT INTO user_order (order_total, pay_id, user_id)
+                VALUES (?, ?, ?)";
         $pdo = $this->openConn();
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([$orderTotal, $userID]);
+        $stmt->execute([$orderTotal, $payID, $userID]);
         $this->setOrderID($pdo->lastInsertId());
     }
 
@@ -75,5 +75,23 @@ class Order extends Database
         $stmt->execute([$orderID]);
         $productNames = $stmt->fetchAll();
         return $productNames;
+    }
+
+    // Check to see if order has already been executed
+    public function orderUnique($payID)
+    {
+        $sql = "SELECT pay_id 
+                FROM user_order 
+                WHERE pay_id = ?";
+        $pdo = $this->openConn();
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$payID]);
+        $payID = $stmt->fetch();
+
+        if ($payID && $payID['pay_id']) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }

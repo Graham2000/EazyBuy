@@ -1,5 +1,5 @@
 <?php 
-    $pageTitle = 'Success';
+    $pageTitle = 'Form Submitted';
     include(__DIR__.'/../src/bootstrap.php');
 
     ini_set('display_errors', '1');
@@ -20,3 +20,4 @@
             echo "Error " . $e->getMessage();
         }
     }
+

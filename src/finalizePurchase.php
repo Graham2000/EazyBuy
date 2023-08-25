@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ->setItemList($itemList);
 
     $redirectUrls = new \PayPal\Api\RedirectUrls();
-    $redirectUrls->setReturnUrl("https://localhost/eazy-buy/src/executePayment.php")
+    $redirectUrls->setReturnUrl("https://localhost/eazy-buy/public/payment-processed.php")
         ->setCancelUrl("https://localhost/eazy-buy/public/order-canceled.php");
 
     $payment = new \PayPal\Api\Payment();
@@ -73,8 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   
         $res = array('url' => $payment->getApprovalLink());
         echo json_encode($res);
-        //$approvalUrl = $payment->getApprovalLink();
-        //header("Location: $approvalUrl");
+
     }
     catch (\PayPal\Exception\PayPalConnectionException $ex) {
         echo $ex->getData();
