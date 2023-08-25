@@ -33,7 +33,7 @@
             <input name="rating" id="ratingVal" value="" style="display:none;"></input>
         </div>
 
-        <textarea class="form-control mt-3" name="review" placeholder="What was your experience with this product?" style="height:200px;"></textarea><br>
+        <textarea class="form-control mt-3" name="review" placeholder="What was your experience with this product?" maxlength="300" style="height:200px;"></textarea><br>
         <button class="btn btn-primary">Submit Review</button>
     </form>
 </div>
