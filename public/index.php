@@ -15,11 +15,11 @@
 <script src="./js/imgSlider.js" defer></script>
 
 <!---Img slider-->
-<div id="imgSlider" class="container border p-5 d-flex justify-content-center align-items-center" style="height:500px">
+<div id="imgSlider" class="container border p-5 mt-3 d-flex justify-content-center align-items-center" style="height:500px">
     <div id="textContainer" class="text-center">
         <h3 id="sliderHeader">Laptops</h3>
-        <p id="sliderDescr">Starting at $117.99</p>
-        <a class="btn btn-info" href="#">Shop Now</a>
+        <p id="sliderDescr">Starting at $700.99</p>
+        <a id="shop" class="btn btn-primary" href="./laptops.php">Shop Laptops</a>
     </div>
 
     <div class="w-100 d-flex flex-row">

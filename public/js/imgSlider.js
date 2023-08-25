@@ -1,14 +1,15 @@
 let imgSlider = document.getElementById("imgSlider");
 let header = document.getElementById("sliderHeader");
 let descr = document.getElementById("sliderDescr");
+let btn = document.getElementById('shop');
 
-let backgroundImages = ["#3b3b3b", "#1f1f1f"];
+let backgroundImages = ["#002244", "#367588"];
 let headerContent = ["Laptops", "Smartphones"];
-let descrContent = ["Starting at $117.99", "Starting at $55.99"];
+let descrContent = ["Starting at $700.99", "Starting at $250.99"];
+let btnText = ["Shop Laptops", "Shop Smartphones"];
+let btnLink = ["./laptops.php", "./smartphones.php"];
 
-//Init img
-//imgSlider.style.backgroundImage = "url('./img/img1.jpg')";
-imgSlider.style.backgroundColor = "#3b3b3b";
+imgSlider.style.backgroundColor = "#002244";
 
 let count = 0;
 const length = backgroundImages.length;
@@ -17,19 +18,21 @@ const length = backgroundImages.length;
 const prevImg = () => {
     if (count !== 0) {
         count--;
-        //imgSlider.style.backgroundImage = `url(${backgroundImages[count]})`;
-        imgSlider.style.backgroundColor = backgroundImages[count];
-        header.textContent = headerContent[count];
-        descr.textContent = descrContent[count];
+        setContent(count);
     }
 }
 
 const nextImg = () => {
     if (count < length - 1) {
         count++;
-        //imgSlider.style.backgroundImage = `url(${backgroundImages[count]})`;
-        imgSlider.style.backgroundColor = backgroundImages[count];
-        header.textContent = headerContent[count];
-        descr.textContent = descrContent[count];
+        setContent(count);
     }
+}
+
+const setContent = (count) => {
+    imgSlider.style.backgroundColor = backgroundImages[count];
+    header.textContent = headerContent[count];
+    descr.textContent = descrContent[count];
+    btn.textContent = btnText[count];
+    btn.href = btnLink[count];
 }
