@@ -93,7 +93,7 @@
         }
 
 
-        public function getFilteredProducts($categoryName, $productName, $manufacturer, $maxPrice, $cpu, $screenSize, $screenUnit, $memorySize, $memoryType, $storageSize, $storageType): array
+        public function getFilteredProducts($categoryName, $productName, $manufacturer, $maxPrice, $cpu, $screenSize, $screenUnit, $memorySize, $memoryType, $storageSize, $storageType, $technology, $os, $frontCamera, $rearCamera): array
         {
             $sql = "SELECT product_id, product_name, manufacturer, 
                     cpu, price, operating_system, memory_size, 
@@ -120,10 +120,17 @@
                     AND (memory_size = ? OR ? IS NULL)
                     AND (memory_type = ? OR ? IS NULL)
                     AND (storage_size = ? OR ? IS NULL)
-                    AND (storage_type = ? OR ? IS NULL)";
+                    AND (storage_type = ? OR ? IS NULL)
+
+                    AND (technology = ? OR ? IS NULL)
+                    AND (operating_system = ? OR ? IS NULL)
+                    AND (front_camera = ? OR ? IS NULL)
+                    AND (rear_camera = ? OR ? IS NULL)
+                    
+                    ";
 
             $stmt = $this->openConn()->prepare($sql);
-            $stmt->execute([$categoryName, '%'.$productName.'%', $productName, $manufacturer, $manufacturer, $maxPrice, $maxPrice, $cpu, $cpu, $screenSize, $screenSize, $screenUnit, $screenUnit, $memorySize, $memorySize, $memoryType, $memoryType, $storageSize, $storageSize, $storageType, $storageType]);
+            $stmt->execute([$categoryName, '%'.$productName.'%', $productName, $manufacturer, $manufacturer, $maxPrice, $maxPrice, $cpu, $cpu, $screenSize, $screenSize, $screenUnit, $screenUnit, $memorySize, $memorySize, $memoryType, $memoryType, $storageSize, $storageSize, $storageType, $storageType, $technology, $technology, $os, $os, $frontCamera, $frontCamera, $rearCamera, $rearCamera]);
             $products = $stmt->fetchAll();
 
             return $products;

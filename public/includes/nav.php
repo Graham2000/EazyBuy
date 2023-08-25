@@ -27,9 +27,6 @@
         <li class="nav-item">
           <a class="nav-link <?= $pageTitle == "Home" ? "active" : "" ?>" href="./index.php">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link <?= $pageTitle == "Products" ? "active" : "" ?>" href="./bestSellers.php">Best Sellers</a>
-        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             All Categories
