@@ -37,6 +37,7 @@
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="./smartphones">Smartphones</a></li>
             <li><a class="dropdown-item" href="./laptops">Laptops</a></li>
+            <li><a class="dropdown-item" href="./desktops">Desktop Computers</a></li>
             <!--
             <li><a class="dropdown-item" href="#">Audio and Headphones</a></li>
             <li><a class="dropdown-item" href="#">Gaming and Entertainment</a></li>
