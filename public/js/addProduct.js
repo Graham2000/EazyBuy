@@ -24,6 +24,6 @@ const updateCart = (checkout) => {
     })
 
     if (checkout) {
-        window.location = "./cart.php";
+        window.location = "./cart";
     }
 }

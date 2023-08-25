@@ -35,7 +35,7 @@
                 </tbody>
             </table>
             <p><b>Total: $<?= $orders[$i]['order_total']; ?></b></p>
-            <p><a class="link-primary" href="./product-review.php?orderID=<?= $orderID; ?>">Leave a review</a></p>
+            <p><a class="link-primary" href="./product-review?orderID=<?= $orderID; ?>">Leave a review</a></p>
         </div>
     <?php } ?>
 </div>

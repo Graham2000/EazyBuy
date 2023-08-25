@@ -12,28 +12,28 @@
 
 <script defer>
   const cartNavigate = () => {
-    window.location.href = './cart.php';
+    window.location.href = './cart';
   }
 </script>
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary p-3">
   <div class="container-fluid">
-    <a class="navbar-brand" href="./index.php">EazyBuy</a>
+    <a class="navbar-brand" href="./">EazyBuy</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link <?= $pageTitle == "Home" ? "active" : "" ?>" href="./index.php">Home</a>
+          <a class="nav-link <?= $pageTitle == "Home" ? "active" : "" ?>" href="./">Home</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             All Categories
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="./smartphones.php">Smartphones</a></li>
-            <li><a class="dropdown-item" href="./laptops.php">Laptops</a></li>
+            <li><a class="dropdown-item" href="./smartphones">Smartphones</a></li>
+            <li><a class="dropdown-item" href="./laptops">Laptops</a></li>
             <!--
             <li><a class="dropdown-item" href="#">Audio and Headphones</a></li>
             <li><a class="dropdown-item" href="#">Gaming and Entertainment</a></li>
@@ -43,12 +43,12 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?= $pageTitle == "Orders" ? "active" : "" ?>" href="./orders.php">My Orders</a>
+          <a class="nav-link <?= $pageTitle == "Orders" ? "active" : "" ?>" href="./orders">My Orders</a>
         </li>
       </ul>
 
       <div class="secondaryNav">
-        <a class='link-dark login' href=<?= $loggedIn ? 'sign-out.php' : 'sign-in.php'; ?>>
+        <a class='link-dark login' href=<?= $loggedIn ? './sign-out' : './sign-in'; ?>>
           <?= $loggedIn ? 'Sign Out' : 'Sign In'; ?>
         </a>
         <div class="d-flex navCart" <?= $loggedIn ? "onclick='cartNavigate()'" : ''; ?> >

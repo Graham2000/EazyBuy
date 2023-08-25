@@ -7,7 +7,7 @@ let backgroundImages = ["#002244", "#367588"];
 let headerContent = ["Laptops", "Smartphones"];
 let descrContent = ["Starting at $700.99", "Starting at $250.99"];
 let btnText = ["Shop Laptops", "Shop Smartphones"];
-let btnLink = ["./laptops.php", "./smartphones.php"];
+let btnLink = ["./laptops", "./smartphones"];
 
 imgSlider.style.backgroundColor = "#002244";
 

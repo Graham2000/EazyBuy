@@ -16,7 +16,7 @@
 <div class="container mt-5" style="max-width:600px;">
     <h3 class="pb-3">Leave a review</h3>
 
-    <form action="./success.php" method="POST">
+    <form action="./success" method="POST">
         <label>Choose a Product</label>
         <select class="form-select" name="productID">
             <?php foreach($orderProducts as $product) { ?>
