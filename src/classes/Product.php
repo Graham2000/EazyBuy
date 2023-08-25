@@ -10,26 +10,6 @@
         private string $technology;
         private int $categoryID;
 
-        /*
-        function __construct(string $description, string $manufacturer, string $operatingSystem, 
-                             float $price, string $ram, string $storage, string $technology, 
-                             string $categoryID) 
-        {
-            $this->description = $description;
-            $this->manufacturer = $manufacturer;
-            $this->operatingsystem = $operatingSystem;
-            $this->price = $price;
-            $this->ram = $ram;
-            $this->storage = $storage;
-            $this->technology = $technology;
-            $this->categoryID = $categoryID;
-        }*/
-
-        public function insertProduct() 
-        {
-
-        }
-
         public function getProduct($productID): array
         {
             $sql = "SELECT product_id, product_name, manufacturer, 
@@ -70,21 +50,21 @@
         public function getAllProducts($categoryName): array
         {
             $sql = "SELECT product_id, product_name, manufacturer, 
-            cpu, price, operating_system, memory_size, 
-            memory_type, storage_size, storage_type, 
-            screen_size, screen_unit, img_primary, category_name
-            FROM product
-            INNER JOIN memory
-            ON product.memory_id = memory.memory_id
-            INNER JOIN storage
-            ON product.storage_id = storage.storage_id
-            INNER JOIN image
-            ON product.img_id = image.img_id
-            INNER JOIN screen
-            ON product.screen_id = screen.screen_id
-            INNER JOIN category
-            ON product.category_id = category.category_id
-            WHERE category_name = ?";
+                    cpu, price, operating_system, memory_size, 
+                    memory_type, storage_size, storage_type, 
+                    screen_size, screen_unit, img_primary, category_name
+                    FROM product
+                    INNER JOIN memory
+                    ON product.memory_id = memory.memory_id
+                    INNER JOIN storage
+                    ON product.storage_id = storage.storage_id
+                    INNER JOIN image
+                    ON product.img_id = image.img_id
+                    INNER JOIN screen
+                    ON product.screen_id = screen.screen_id
+                    INNER JOIN category
+                    ON product.category_id = category.category_id
+                    WHERE category_name = ?";
             $stmt = $this->openConn()->prepare($sql);
             $stmt->execute([$categoryName]);
             $products = $stmt->fetchAll();
@@ -121,19 +101,43 @@
                     AND (memory_type = ? OR ? IS NULL)
                     AND (storage_size = ? OR ? IS NULL)
                     AND (storage_type = ? OR ? IS NULL)
-
                     AND (technology = ? OR ? IS NULL)
                     AND (operating_system = ? OR ? IS NULL)
                     AND (front_camera = ? OR ? IS NULL)
-                    AND (rear_camera = ? OR ? IS NULL)
-                    
-                    ";
+                    AND (rear_camera = ? OR ? IS NULL)";
 
             $stmt = $this->openConn()->prepare($sql);
             $stmt->execute([$categoryName, '%'.$productName.'%', $productName, $manufacturer, $manufacturer, $maxPrice, $maxPrice, $cpu, $cpu, $screenSize, $screenSize, $screenUnit, $screenUnit, $memorySize, $memorySize, $memoryType, $memoryType, $storageSize, $storageSize, $storageType, $storageType, $technology, $technology, $os, $os, $frontCamera, $frontCamera, $rearCamera, $rearCamera]);
             $products = $stmt->fetchAll();
 
             return $products;
+        }
+
+        public function getTopProducts($categoryName)
+        {
+            $sql = "SELECT DISTINCT product.product_id, product_name, category_name, img_cover, price, COUNT(*) AS 'product_count'
+                    FROM order_product
+                    INNER JOIN product 
+                    ON order_product.product_id = product.product_id
+                    INNER JOIN image 
+                    ON product.img_id = image.img_id
+                    INNER JOIN category 
+                    ON product.category_id = category.category_id
+                    WHERE category_name = ?
+                    GROUP BY product_name ASC
+                    LIMIT 10";
+            $stmt = $this->openConn()->prepare($sql);
+            $stmt->execute([$categoryName]);
+            $products = $stmt->fetchAll();
+
+            return $products;
+        }
+
+        public function formatPrice($price) 
+        {
+            $price = explode(".", $price);
+            
+            return [$price[0], $price[1]];
         }
     }
 ?>
