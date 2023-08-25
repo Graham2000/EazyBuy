@@ -1,8 +1,0 @@
-RewriteEngine on
-
-RewriteRule ^laptops laptops.php [NC,L]
-RewriteRule ^smartphones smartphones.php [NC,L]
-RewriteRule ^orders orders.php [NC,L]
-RewriteRule ^cart cart.php [NC,L]
-RewriteRule ^product-review product-review.php [NC,L]
-RewriteRule ^success success.php [NC,L]
