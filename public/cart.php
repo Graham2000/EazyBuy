@@ -39,8 +39,7 @@
                 Summary <br>
                 Item(s): <span id="tc"><?= $content['item_count']; ?></span>
                 <hr>
-                Total: $<span id="tp"><?= $content['total_price']; ?></span><br>
-                Paypal Checkout<br>
+                Total: $<span id="tp"><?= $content['total_price']; ?></span><br><br>
                 <button id="checkout" class="btn btn-primary">Check Out Now</button>
                 <script src="./js/checkout.js" defer></script>
             </div>
@@ -54,7 +53,6 @@
                 Item(s): 0</span>
                 <hr>
                 Total: $<span id="tp">0</span><br>
-                Paypal Checkout
                 <!--
                 <script src="https://www.paypal.com/sdk/js?client-id=<?= $_ENV['CLIENT_ID']; ?>&currency=USD"></script>
                 <div id="paypal-button-container"></div>

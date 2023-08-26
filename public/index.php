@@ -9,6 +9,7 @@
     $product = new Product();
     $topLaptops = $product->getTopProducts('Laptop');
     $topSmartphones = $product->getTopProducts('Smartphone');
+    $topDesktops = $product->getTopProducts('Desktop');
     //var_dump($topLaptops);
 ?>
 
@@ -57,7 +58,7 @@
                 $starRating = $review->getStarRating($totalReviewCount, $totalRating);
             ?>
             <div class="product">
-                <img src="data:image/jpeg;base64,<?= base64_encode($topSmartphone["img_cover"]); ?>"></img><br>
+                <img src="data:image/jpeg;base64,<?= base64_encode($topSmartphone["img_primary"]); ?>"></img><br>
                 <span class="ms-2">
                     <?= $starRating . " (" . $totalReviewCount . " reviews)"; ?>
                 </span>
@@ -83,7 +84,7 @@
                 $starRating = $review->getStarRating($totalReviewCount, $totalRating);
             ?>
             <div class="product">
-                <img src="data:image/jpeg;base64,<?= base64_encode($topLaptop["img_cover"]); ?>"></img><br>
+                <img src="data:image/jpeg;base64,<?= base64_encode($topLaptop["img_primary"]); ?>"></img><br>
                 <span class="ms-2">
                     <?= $starRating . " (" . $totalReviewCount . " reviews)"; ?>
                 </span>
@@ -92,6 +93,31 @@
             </div>
         <?php } ?>
     </div>
+
+    <h3 class="mt-5"><b>Top Selling in Desktop Computers</b></h3>
+
+<div class="productShowcase">
+    <?php foreach ($topDesktops as $topDesktop) { ?>
+        <?php
+            $price = $product->formatPrice($topDesktop['price']);
+
+            $review = new Review();
+            $totalRating = $review->getTotalRating($review, $topDesktop['product_id']);
+            // Get number of reviews
+            $totalReviewCount = $review->getReviewCount();
+            // Get stars
+            $starRating = $review->getStarRating($totalReviewCount, $totalRating);
+        ?>
+        <div class="product">
+            <img src="data:image/jpeg;base64,<?= base64_encode($topDesktop["img_primary"]); ?>"></img><br>
+            <span class="ms-2">
+                <?= $starRating . " (" . $totalReviewCount . " reviews)"; ?>
+            </span>
+            <p><a class="link-dark" href="product.php?id=<?= $topDesktop['product_id']; ?>"><?= $topDesktop['product_name']; ?></a></p>
+            <p class="priceWhole mt-2">$<?= $price[0]; ?><span class="text-muted pricePart">.<?= $price[1]; ?></span></p>
+        </div>
+    <?php } ?>
+</div>
     
 </div>
 

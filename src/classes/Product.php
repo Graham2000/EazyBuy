@@ -115,7 +115,7 @@
 
         public function getTopProducts($categoryName)
         {
-            $sql = "SELECT DISTINCT product.product_id, product_name, category_name, img_cover, price, COUNT(*) AS 'product_count'
+            $sql = "SELECT DISTINCT product.product_id, product_name, category_name, img_primary, price, COUNT(*) AS 'product_count'
                     FROM order_product
                     INNER JOIN product 
                     ON order_product.product_id = product.product_id
@@ -124,7 +124,8 @@
                     INNER JOIN category 
                     ON product.category_id = category.category_id
                     WHERE category_name = ?
-                    GROUP BY product_name ASC
+                    GROUP BY product_name
+                    ORDER BY COUNT(*) DESC
                     LIMIT 10";
             $stmt = $this->openConn()->prepare($sql);
             $stmt->execute([$categoryName]);
